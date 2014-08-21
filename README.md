@@ -13,7 +13,7 @@ PHP 5.2 and later.
 ### Installing using Composer
 
 * Get Composer [http://getcomposer.org/]
-* Create/append the following to your +composer.json+ file
+* Create/append the following to your `composer.json` file
 
         {
           "require": {

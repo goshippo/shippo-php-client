@@ -1,0 +1,29 @@
+{
+  "name": "shippo/shippo-php",
+  "description": "Shippo PHP Library",
+  "keywords": [
+    "shippo",
+    "shipping",
+    "api"
+  ],
+  "homepage": "https://goshippo.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Shippo & Contributors",
+      "homepage": "https://goshippo.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.2",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "simpletest/simpletest": "*"
+  },
+  "autoload": {
+    "classmap": ["lib/Shippo/"]
+  }
+}

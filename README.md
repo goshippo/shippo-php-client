@@ -10,9 +10,29 @@ PHP 5.2 and later.
 
 ## Installation
 
-To use the bindings, add the following to your PHP script:
+### Installing using Composer
 
-    require_once("/path/to/Shippo-php/lib/Shippo.php");
+* Get Composer [http://getcomposer.org/]
+* Create/append the following to your +composer.json+ file
+
+        {
+          "require": {
+            "shippo/shippo-php": "1.*"
+          }
+        }
+    
+* Install via:
+
+        composer.phar install
+
+* To use the bindings, either user Composer's autoload:
+
+        require_once('vendor/autoload.php');
+        
+    Or manually:
+    
+        require_once('/path/to/vendor/shippo/shippo-php/lib/Shippo.php');
+
 
 ## Getting Started
 

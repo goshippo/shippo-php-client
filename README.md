@@ -1,20 +1,20 @@
-=Shippo PHP API wrapper
+#Shippo PHP API wrapper
 
 Shippo provides a shipping API that integrates with various shipping providers such as USPS, UPS, and Fedex. 
 
 Don't have an account? Sign up at https://goshippo.com/
 
-== Requirements
+## Requirements
 
 PHP 5.2 and later.
 
-== Installation
+## Installation
 
 To use the bindings, add the following to your PHP script:
 
     require_once("/path/to/Shippo-php/lib/Shippo.php");
 
-== Getting Started
+## Getting Started
 
 Simple usage looks like:
 
@@ -42,8 +42,6 @@ Simple usage looks like:
     
         // Please check Example.php for more examples
         
-== Documentation
+## Documentation
 
 Please see https://goshippo.com/docs/ for up-to-date documentation.
-
-

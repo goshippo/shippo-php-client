@@ -66,8 +66,8 @@ array(
     'items'=> array($customs_item)
 ));
 
-//Creating the shipment object. In this example, the objects are directly passed to the 
-//Shipment.create method, Alternatively, the Address and Parcel objects could be created 
+//Creating the shipment object. In this example, the objects are directly passed to the
+//Shipment.create method, Alternatively, the Address and Parcel objects could be created
 //using Address.create(..) and Parcel.create(..) functions respectively.
 $shipment = Shippo_Shipment::create(
 array(
@@ -94,7 +94,7 @@ $rates = Shippo_Shipment::get_shipping_rates(array('id'=> $shipment["object_id"]
 //Get the first rate in the rates results.
 $rate = $rates["results"][0];
 
-//Purchase the desired rate. sync=True indicates that the function will wait until the 
+//Purchase the desired rate. sync=True indicates that the function will wait until the
 //carrier returns a shipping label before it returns
 $transaction = Shippo_Transaction::create(array('rate'=> $rate["object_id"]));
 
@@ -112,4 +112,3 @@ if ($transaction["object_status"] == "SUCCESS"){
 }else {
     echo($transaction["messages"]);
 }
-?>

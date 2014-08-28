@@ -3,11 +3,6 @@
 class Shippo_ShipmentTest extends Shippo_Test
 {
     
-    function setUp()
-    {
-        Shippo::setApiKey('dW5pdHRlc3Q6dW5pdHRlc3Q=');
-    }
-    
     public function testValidCreate()
     {
         $shipment = self::getDefaultShipment();

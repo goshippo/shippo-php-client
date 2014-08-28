@@ -34,8 +34,8 @@ require_once(dirname(__FILE__) . '/Shippo/Error.php');
 require_once(dirname(__FILE__) . '/Shippo/InvalidRequestErrorTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ObjectTest.php');
 require_once(dirname(__FILE__) . '/Shippo/UtilTest.php');
-//
-// // // Shippo API Tests
+
+// Shippo API Tests
 require_once(dirname(__FILE__) . '/Shippo/AddressTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ParcelTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ShipmentTest.php');

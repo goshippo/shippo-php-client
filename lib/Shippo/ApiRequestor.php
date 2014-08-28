@@ -238,8 +238,7 @@ class Shippo_ApiRequestor
         $httpBody = curl_exec($curl);
         
         $errorNum = curl_errno($curl);
-        if ($errorNum == CURLE_SSL_CACERT || $errorNum == CURLE_SSL_PEER_CERTIFICATE || $errorNum == 77) {
-            curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/../cacert.pem');
+        if ($errorNum == 77) {
             $httpBody = curl_exec($curl);
         }
         

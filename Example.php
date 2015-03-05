@@ -78,7 +78,6 @@ array(
     'submission_type'=> 'PICKUP',
     'insurance_amount'=> '30',
     'insurance_currency'=> 'USD',
-    'extra'=> '{"signature_confirmation": true}',
     'customs_declaration'=> $customs_declaration["object_id"]
 ));
 

@@ -93,8 +93,7 @@ $rates = Shippo_Shipment::get_shipping_rates(array('id'=> $shipment["object_id"]
 //Get the first rate in the rates results.
 $rate = $rates["results"][0];
 
-//Purchase the desired rate. sync=True indicates that the function will wait until the 
-//carrier returns a shipping label before it returns
+// Purchase the desired rate
 $transaction = Shippo_Transaction::create(array('rate'=> $rate["object_id"]));
 
 //Wait for transaction to be proccessed

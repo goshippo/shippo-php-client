@@ -45,3 +45,5 @@ require_once(dirname(__FILE__) . '/Shippo/CustomsItemTest.php');
 require_once(dirname(__FILE__) . '/Shippo/CustomsDeclarationTest.php');
 require_once(dirname(__FILE__) . '/Shippo/RefundTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ManifestTest.php');
+require_once(dirname(__FILE__) . '/Shippo/CarrierAccountTest.php');
+

@@ -203,7 +203,7 @@ class Shippo_ApiRequestor
         $method = strtolower($method);
         $curlOptions = array();
         
-        // Rquest Method
+        // Request Method
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
             if (count($params) > 0) {
@@ -212,15 +212,10 @@ class Shippo_ApiRequestor
             }
         } else if ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
+            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);  
+        } else if ($method == 'put') {
+            $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PUT';
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
-            // echo("<br><br>PARAMETERS<br><br>" . json_encode($params) . "<br><br>");
-            
-        } else if ($method == 'delete') {
-            $curlOptions[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-            if (count($params) > 0) {
-                $encoded = self::encode($params);
-                $absUrl = "{$absUrl}?{$encoded}";
-            }
         } else {
             throw new Error("Unrecognized method {$method}");
         }

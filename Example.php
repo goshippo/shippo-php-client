@@ -5,7 +5,7 @@ the creation of CustomsItems and CustomsDeclaration objects. */
 require_once('lib/Shippo.php');
 
 //replace <USERNAME> and <PASSWORD> with your credentials
-Shippo::setCredentials("<USERNAME>", "<PASSWORD>");
+Shippo::setCredentials("<username>", "<password>");
 
 //example fromAddress array object
 $fromAddress = array(

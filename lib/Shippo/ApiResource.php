@@ -107,6 +107,15 @@ abstract class Shippo_ApiResource extends Shippo_Object
         list($response, $apiKey) = $requestor->request('post', $url, $params);
         return Shippo_Util::convertToShippoObject($response, $apiKey);
     }
+
+    protected static function _scopedUpdate($class, $id, $params = null, $apiKey = null)
+    {
+        self::_validateCall('update', $params, $apiKey);
+        $requestor = new Shippo_ApiRequestor($apiKey);
+        $url = self::_scopedLsb($class, 'classUrl', $class) . "/" . $id;
+        list($response, $apiKey) = $requestor->request('put', $url, $params);
+        return Shippo_Util::convertToShippoObject($response, $apiKey);
+    }
     
     // Special Case for Rates which has parameters of the format: /url/parameter/url
     protected static function _scopedGet($class, $id, $params = null, $apiKey = null)

@@ -45,7 +45,7 @@ class Shippo_CarrierAccountTest extends Shippo_Test
 		$current_account_id = $carrier_account->account_id;
 		$new_account_id = $current_account_id . '_updated_account_id';
 		$updated_account = Shippo_CarrierAccount::update(
-			$current_account_id, 
+			$carrier_account->object_id, 
 			array('account_id' => $new_account_id)
 		);
 		

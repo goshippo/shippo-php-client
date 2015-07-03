@@ -44,3 +44,4 @@ require(dirname(__FILE__) . '/Shippo/CustomsItem.php');
 require(dirname(__FILE__) . '/Shippo/CustomsDeclaration.php');
 require(dirname(__FILE__) . '/Shippo/Refund.php');
 require(dirname(__FILE__) . '/Shippo/Manifest.php');
+require(dirname(__FILE__) . '/Shippo/CarrierAccount.php');

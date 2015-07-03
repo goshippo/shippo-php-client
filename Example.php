@@ -85,6 +85,7 @@ array(
 $attempts = 0;
 while (($shipment["object_status"] == "QUEUED" || $shipment["object_status"] == "WAITING") && $attempts < 10){
     $shipment = Shippo_Shipment::retrieve($shipment["object_id"]);
+    sleep(1);
     $attempts +=1;}
 
 //Get all rates for shipment.
@@ -100,6 +101,7 @@ $transaction = Shippo_Transaction::create(array('rate'=> $rate["object_id"]));
 $attempts = 0;
 while (($transaction["object_status"] == "QUEUED" || $transaction["object_status"] == "WAITING") && $attempts < 10){
     $transaction = Shippo_Transaction::retrieve($transaction["object_id"]);
+    sleep(1);
     $attempts +=1;}
 
 //label_url and tracking_number

@@ -128,7 +128,7 @@ abstract class Shippo_ApiResource extends Shippo_Object
     }
     
     // Special case for Address Validation
-    protected static function _scopedValidate($class, $id)
+    protected static function _scopedValidate($class, $id, $params = null, $apiKey = null)
     {
         self::_validateCall('create', $params, $apiKey);
         $requestor = new Shippo_ApiRequestor($apiKey);

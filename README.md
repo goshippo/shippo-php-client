@@ -40,7 +40,6 @@ Simple usage looks like:
 
     // Replace <API-KEY> with your Shippo API Key
     Shippo::setApiKey("<API-KEY>");
-    Shippo::setApiKey("<API-KEY>");
     $address = Shippo_Address::
         create(
             array(

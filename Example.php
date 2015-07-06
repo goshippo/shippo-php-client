@@ -1,16 +1,16 @@
 <?php
-/* This example demonstrates how to purchase a label for an international shipment.
-Creating domestic shipment would follow a similiar proccess but would not require
-the creation of CustomsItems and CustomsDeclaration objects. */
+/* 
+This example demonstrates how to purchase a label for a domestic US shipment.
+*/
 require_once('lib/Shippo.php');
 
-//replace <USERNAME> and <PASSWORD> with your credentials
-Shippo::setCredentials("<username>", "<password>");
+// Replace <API-KEY> with your credentials
+Shippo::setApiKey("<API-KEY>");
 
-//example fromAddress array object
+// example fromAddress
 $fromAddress = array(
     'object_purpose' => 'PURCHASE',
-    'name' => 'Laura Behrens Wu',
+    'name' => 'Shippo Itle"',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
     'city' => 'San Francisco',
@@ -18,23 +18,22 @@ $fromAddress = array(
     'zip' => '94117',
     'country' => 'US',
     'phone' => '+1 555 341 9393',
-    'email' => 'laura@goshippo.com');
+    'email' => 'support@goshipppo.com');
 
-//example fromAddress array object
+// example fromAddress
 $toAddress = array(
     'object_purpose' => 'PURCHASE',
     'name' => 'Mr Hippo"',
-    'company' => 'London Zoo"',
-    'street1' => 'Regents Park',
-    'street2' => 'Outer Cir',
-    'city' => 'LONDON',
-    'state' => '',
-    'zip' => 'NW1 4RY',
-    'country' => 'GB',
+    'company' => 'San Diego Zoo"',
+    'street1' => '2920 Zoo Drive"',
+    'city' => 'San Diego',
+    'state' => 'CA',
+    'zip' => '92101',
+    'country' => 'US',
     'phone' => '+1 555 341 9393',
-    'email' => 'mrhippo@goshippo.com');
+    'email' => 'hippo@goshipppo.com');
 
-//example fromAddress array object
+// example parcel
 $parcel = array(
     'length'=> '5',
     'width'=> '5',
@@ -44,31 +43,7 @@ $parcel = array(
     'mass_unit'=> 'lb',
 );
 
-//example CustomsItems object. This is only required for int'l shipment only.
-$customs_item = array(
-    'description'=> 'T-Shirt',
-    'quantity'=> '2',
-    'net_weight'=> '1',
-    'mass_unit'=> 'lb',
-    'value_amount'=> '20',
-    'value_currency'=> 'USD',
-    'origin_country'=> 'US');
-
-#Creating the CustomsDeclaration
-#(CustomsDeclarations are only required for international shipments)
-$customs_declaration = Shippo_CustomsDeclaration::create(
-array(
-    'contents_type'=> 'MERCHANDISE',
-    'contents_explanation'=> 'T-Shirt purchase',
-    'non_delivery_option'=> 'RETURN',
-    'certify'=> 'true',
-    'certify_signer'=> 'Laura Behrens Wu',
-    'items'=> array($customs_item)
-));
-
-//Creating the shipment object. In this example, the objects are directly passed to the 
-//Shipment.create method, Alternatively, the Address and Parcel objects could be created 
-//using Address.create(..) and Parcel.create(..) functions respectively.
+// example Shipment object
 $shipment = Shippo_Shipment::create(
 array(
     'object_purpose'=> 'PURCHASE',
@@ -77,34 +52,35 @@ array(
     'parcel'=> $parcel,
     'submission_type'=> 'PICKUP',
     'insurance_amount'=> '30',
-    'insurance_currency'=> 'USD',
-    'customs_declaration'=> $customs_declaration["object_id"]
+    'insurance_currency'=> 'USD'
 ));
 
-//Wait for rates to be generated
-$attempts = 0;
-while (($shipment["object_status"] == "QUEUED" || $shipment["object_status"] == "WAITING") && $attempts < 10){
+// Wait for rates to be generated
+$ratingStartTime=time();
+while (($shipment["object_status"] == "QUEUED" || $shipment["object_status"] == "WAITING")){
     $shipment = Shippo_Shipment::retrieve($shipment["object_id"]);
-    sleep(1);
-    $attempts +=1;}
+    sleep(0.2);
+    if (time()-$ratingStartTime>25) break;
+    }
 
-//Get all rates for shipment.
+// Get all rates for shipment.
 $rates = Shippo_Shipment::get_shipping_rates(array('id'=> $shipment["object_id"]));
 
-//Get the first rate in the rates results.
+// Get the first rate from the rates results
 $rate = $rates["results"][0];
 
 // Purchase the desired rate
 $transaction = Shippo_Transaction::create(array('rate'=> $rate["object_id"]));
 
-//Wait for transaction to be proccessed
-$attempts = 0;
-while (($transaction["object_status"] == "QUEUED" || $transaction["object_status"] == "WAITING") && $attempts < 10){
+// Wait for transaction to be proccessed
+$transactionStartTime=time();
+while (($transaction["object_status"] == "QUEUED" || $transaction["object_status"] == "WAITING")){
     $transaction = Shippo_Transaction::retrieve($transaction["object_id"]);
-    sleep(1);
-    $attempts +=1;}
+    sleep(0.2);
+    if (time()-$transactionStartTime>25) break;
+    }
 
-//label_url and tracking_number
+// label_url and tracking_number
 if ($transaction["object_status"] == "SUCCESS"){
     echo($transaction["label_url"]);
     echo("\n");

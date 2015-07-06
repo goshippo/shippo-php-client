@@ -21,17 +21,6 @@ abstract class Shippo
     const VERSION = '0.0.1';
     
     /**
-     * Sets the username/password to be used for requests.
-     *
-     * @param string $username
-     * @param string $password
-     */
-    public static function setCredentials($username, $password)
-    {
-        self::setApiKey(base64_encode("$username:$password"));
-    }
-    
-    /**
      * @return string The API key used for requests.
      */
     public static function getApiKey()

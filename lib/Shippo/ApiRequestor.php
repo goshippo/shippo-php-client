@@ -168,7 +168,7 @@ class Shippo_ApiRequestor
         $uname = php_uname();
         $headers = array(
             'Content-Type: application/json',
-            'Authorization: Basic ' . $myApiKey,
+            'Authorization: ShippoToken ' . $myApiKey,
             'Accept: application/json',
             'User-Agent: Shippo/v1 PHPBindings/' . Shippo::VERSION
         );

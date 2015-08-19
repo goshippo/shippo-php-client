@@ -59,7 +59,7 @@ array(
 $ratingStartTime=time();
 while (($shipment["object_status"] == "QUEUED" || $shipment["object_status"] == "WAITING")){
     $shipment = Shippo_Shipment::retrieve($shipment["object_id"]);
-    usleep(200000);
+    usleep(200000); //sleeping 200ms
     if (time()-$ratingStartTime>25) break;
     }
 
@@ -76,7 +76,7 @@ $transaction = Shippo_Transaction::create(array('rate'=> $rate["object_id"]));
 $transactionStartTime=time();
 while (($transaction["object_status"] == "QUEUED" || $transaction["object_status"] == "WAITING")){
     $transaction = Shippo_Transaction::retrieve($transaction["object_id"]);
-    usleep(200000);
+    usleep(200000);  //sleeping 200ms
     if (time()-$transactionStartTime>25) break;
     }
 

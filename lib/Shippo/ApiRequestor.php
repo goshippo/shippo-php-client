@@ -41,6 +41,8 @@ class Shippo_ApiRequestor
     {
         if ($d instanceof Shippo_ApiResource) {
             return self::utf8($d->id);
+        } else if ($d instanceof Shippo_Object) {
+            return self::utf8($d->object_id);
         } else if ($d === true) {
             return 'true';
         } else if ($d === false) {

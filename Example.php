@@ -55,7 +55,7 @@ array(
 
 // Select the rate you want to purchase.
 // We simply select the first rate in this example.
-$rates = $shipment["rates_list"][0];
+$rate = $shipment["rates_list"][0];
 
 // Purchase the desired rate
 $transaction = Shippo_Transaction::create(array(

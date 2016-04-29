@@ -69,6 +69,8 @@ if ($transaction["object_status"] == "SUCCESS"){
     echo("\n");
     echo($transaction["tracking_number"]);
 }else {
-    echo($transaction["messages"]);
+    foreach ($transaction["messages"] as $message) {
+        echo($message);
+    }
 }
 ?>

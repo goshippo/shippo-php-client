@@ -2,9 +2,15 @@
   "name": "shippo/shippo-php",
   "description": "Shippo PHP Library",
   "keywords": [
-    "shippo",
+    "ups",
+    "usps",
+    "fedex",
+    "dhl",
+    "uber",
+    "shyp",
     "shipping",
-    "api"
+    "tracking",
+    "address"
   ],
   "homepage": "https://goshippo.com/",
   "license": "MIT",

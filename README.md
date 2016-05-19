@@ -64,7 +64,7 @@ You do need a Shippo account to use our API. Don't have an account? Sign up at [
         require_once('/path/to/vendor/shippo/shippo-php/lib/Shippo.php');
 
 ### Installing using Laravel 
-[bmartus](https://github.com/bmartus) created an awesome Laravel 5 wrapper, [check it out here](https://github.com/bmartus/laravel-shippo).
+[bmartus](https://github.com/bmartus) created an awesome Laravel 5.2 wrapper, [check it out here](https://github.com/bmartus/laravel-shippo).
 
 ## Getting Started
 

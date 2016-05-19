@@ -1,6 +1,6 @@
 {
   "name": "shippo/shippo-php",
-  "description": "Shippo PHP Library",
+  "description": "A PHP library for connecting with multiple carriers (FedEx, UPS, USPS) using Shippo.",
   "keywords": [
     "ups",
     "usps",

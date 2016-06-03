@@ -89,7 +89,8 @@ Simple usage looks like:
                  'email' => 'jmercouris@iit.com',
                  'metadata' => 'Customer ID 234;234'
             ));
-        echo(var_dump($address));
+            
+        var_dump($address);
     
         // Please check Example.php for more examples
         

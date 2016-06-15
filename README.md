@@ -78,16 +78,14 @@ Simple usage looks like:
                  'object_purpose' => 'QUOTE',
                  'name' => 'John Smith',
                  'company' => 'Initech',
-                 'street1' => 'Greene Rd.',
-                 'street_no' => '6512',
-                 'street2' => '',
+                 'street1' => '6512 Greene Rd.',
                  'city' => 'Woodridge',
                  'state' => 'IL',
                  'zip' => '60517',
                  'country' => 'US',
-                 'phone' => '123 353 2345',
+                 'phone' => '773 353 2345',
                  'email' => 'jmercouris@iit.com',
-                 'metadata' => 'Customer ID 234;234'
+                 'metadata' => 'Customer ID 23424'
             ));
             
         var_dump($address);

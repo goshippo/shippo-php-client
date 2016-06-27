@@ -11,7 +11,7 @@ class Shippo_AddressTest extends Shippo_Test
     public function testResidentialCreate()
     {
         $address = Shippo_Address::create(array(
-            'object_purpose' => 'QUOTE',
+            'object_purpose' => 'PURCHASE',
             'name' => 'John Smith',
             'company' => 'Initech',
             'street1' => 'Greene Rd.',

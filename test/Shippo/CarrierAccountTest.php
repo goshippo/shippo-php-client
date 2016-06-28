@@ -3,11 +3,6 @@
 class Shippo_CarrierAccountTest extends Shippo_Test
 {
     
-    function setUp()
-    {
-        Shippo::setApiKey('dW5pdHRlc3Q6dW5pdHRlc3Q=');
-    }
-    
     public function testListAll() {
         $list = Shippo_CarrierAccount::all();
         $this->assertFalse(is_null($list->count));

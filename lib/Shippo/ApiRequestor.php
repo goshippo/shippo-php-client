@@ -44,9 +44,9 @@ class Shippo_ApiRequestor
         } else if ($d instanceof Shippo_Object) {
             return self::utf8($d->object_id);
         } else if ($d === true) {
-            return 'true';
+            return true;
         } else if ($d === false) {
-            return 'false';
+            return false;
         } else if (is_array($d)) {
             $res = array();
             foreach ($d as $k => $v)

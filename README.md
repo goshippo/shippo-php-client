@@ -1,42 +1,14 @@
 #Shippo PHP API wrapper
 
-Shippo is a shipping API that connects you with multiple shipping carriers (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many [others](https://goshippo.com/shipping-carriers/)) through one interface.
+Shippo is a shipping API that connects you with [multiple shipping carriers](https://goshippo.com/carriers/) (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many others) through one interface.
 
-Our API provides in depth support of carrier functionality. Here are just some of the features we support for USPS, FedEx and UPS via the API.
-
-For most major carriers (USPS, UPS, FedEx and most others) our API supports:
-
-* Shipping rates & labels
-* Tracking
-	
-* For USPS, the API additionally supports:
-	* US Address validation
-	* Scan forms
-	* Additional services: signature, certified mail, delivery confirmation, and others
-
-* For FedEx, the API additionally supports:
-	* Signature and adult signature confirmation
-	* FedEx Smartpost
-
-* For UPS, the API additionally supports:
-	* Signature and adult signature confirmation
-	* UPS Mail Innovations
-	* UPS SurePost
-
-The complete list of carrier supported features is [here](https://goshippo.com/shipping-api/carriers).
-
-###About Shippo
-Connect with multiple different carriers, get discounted shipping labels, track parcels, and much more with just one integration. You can use your own carrier accounts or take advantage of our deeply discounted rates. Using Shippo makes it easy to deal with multiple carrier integrations,  rate shopping, tracking and other parts of the shipping workflow. We provide the API and dashboard for all your shipping needs.
-
-The API is free to use. You only pay when you print a live label from a carrier.  Use test labels during development to avoid all fees.
-
-You do need a Shippo account to use our API. Don't have an account? Sign up at [https://goshippo.com/](https://goshippo.com/).
+Print a shipping label in 10 mins using our default USPS and DHL Express accounts. No need to register for a carrier account to get started.
 
 ## Requirements
 
 * PHP 5.2 or later.
 
-* [Shippo account](https://goshippo.com/) - free to sign up, free to use the API
+* [Shippo account](https://goshippo.com/) - free to sign up, free to use the API. Only pay to print a live label, test labels are free. 
 
 ## Installation
 
@@ -94,4 +66,26 @@ Simple usage looks like:
         
 ## Documentation
 
-Please see [https://goshippo.com/shipping-api/](https://goshippo.com/shipping-api/) for up-to-date documentation.
+Please see [https://goshippo.com/docs](https://goshippo.com/docs) for up-to-date documentation.
+
+## About Shippo
+
+Connect with multiple different carriers, get discounted shipping labels, track parcels, and much more with just one integration. You can use your own carrier accounts or take advantage of our discounted rates with the USPS and DHL Express. Using Shippo makes it easy to deal with multiple carrier integrations, rate shopping, tracking and other parts of the shipping workflow. We provide the API and dashboard for all your shipping needs.
+
+## Supported Features
+
+The Shippo API provides in depth support of carrier and shipping functionalities. Here are just some of the features we support through the API:
+
+* Shipping rates & labels
+* Tracking for any shipment with just the tracking number
+* Batch label generation
+* Multi-piece shipments
+* Manifests and SCAN forms
+* Customs declaration and commercial invoicing
+* Address verification
+* Signature and adult signature confirmation
+* Consolidator support including:
+	* DHL eCommerce
+	* UPS Mail Innovations
+	* FedEx Smartpost
+* Additional services: cash-on-delivery, certified mail, delivery confirmation, and more.

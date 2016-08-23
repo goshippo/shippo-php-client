@@ -228,8 +228,6 @@ class Shippo_ApiRequestor
         $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
         $curlOptions[CURLOPT_TIMEOUT] = 80;
         $curlOptions[CURLOPT_HTTPHEADER] = $headers;
-        // echo(var_dump($headers));
-        $curlOptions[CURLOPT_FOLLOWLOCATION] = TRUE;
         
         curl_setopt_array($curl, $curlOptions);
         $httpBody = curl_exec($curl);

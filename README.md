@@ -41,7 +41,7 @@ Print a shipping label in 10 mins using our default USPS and DHL Express account
 ## Getting Started
 
 Simple usage looks like:
-
+```php
     // Replace <API-KEY> with your Shippo API Key
     Shippo::setApiKey("<API-KEY>");
     $address = Shippo_Address::
@@ -63,7 +63,19 @@ Simple usage looks like:
         var_dump($address);
     
         // Please check Example.php for more examples
-        
+```        
+
+
+We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).
+Some of the use cases we covered include:
+
+* [Basic domestic shipment](examples/basic-shipment.php)
+* [Interntational shipment](examples/interntational-shipment.php)  - Custom forms, interntational destinations
+* [Price estimation matrix](examples/estimate-shipping-prices.php)
+* [Retrieve rates, filter by delivery time and purchase cheapest label](examples/filter-by-delivery-time.php)
+* [Retrieve rates, purchase label for fastest delivery option](examples/purchase-fastest-service.php)
+* [Retrieve rates so customer can pick preferred shipping method, purchase label](examples/get-rates-to-show-customer.php)
+
 ## Documentation
 
 Please see [https://goshippo.com/docs](https://goshippo.com/docs) for up-to-date documentation.

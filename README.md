@@ -62,15 +62,13 @@ Simple usage looks like:
             
         var_dump($address);
     
-        // Please check Example.php for more examples
 ```        
-
 
 We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).
 Some of the use cases we covered include:
 
 * [Basic domestic shipment](examples/basic-shipment.php)
-* [Interntational shipment](examples/interntational-shipment.php)  - Custom forms, interntational destinations
+* [International shipment](examples/international-shipment.php)  - Custom forms, interntational destinations
 * [Price estimation matrix](examples/estimate-shipping-prices.php)
 * [Retrieve rates, filter by delivery time and purchase cheapest label](examples/filter-by-delivery-time.php)
 * [Retrieve rates, purchase label for fastest delivery option](examples/purchase-fastest-service.php)
@@ -88,16 +86,19 @@ Connect with multiple different carriers, get discounted shipping labels, track 
 
 The Shippo API provides in depth support of carrier and shipping functionalities. Here are just some of the features we support through the API:
 
-* Shipping rates & labels
-* Tracking for any shipment with just the tracking number
-* Batch label generation
-* Multi-piece shipments
-* Manifests and SCAN forms
-* Customs declaration and commercial invoicing
-* Address verification
-* Signature and adult signature confirmation
+## Supported Features
+
+The Shippo API provides in depth support of carrier and shipping functionalities. Here are just some of the features we support through the API:
+
+* Shipping rates & labels - [Docs](https://goshippo.com/docs/first-shipment)
+* Tracking for any shipment with just the tracking number - [Docs](https://goshippo.com/docs/tracking)
+* Batch label generation - [Docs](https://goshippo.com/docs/batch)
+* Multi-piece shipments - [Docs](https://goshippo.com/docs/multipiece)
+* Manifests and SCAN forms - [Docs](https://goshippo.com/docs/manifests)
+* Customs declaration and commercial invoicing - [Docs](https://goshippo.com/docs/international)
+* Address verification - [Docs](https://goshippo.com/docs/address-validation)
 * Consolidator support including:
 	* DHL eCommerce
 	* UPS Mail Innovations
 	* FedEx Smartpost
-* Additional services: cash-on-delivery, certified mail, delivery confirmation, and more.
+* Additional services: cash-on-delivery, certified mail, delivery confirmation, and more - [Docs](https://goshippo.com/docs/reference#shipment-extras)

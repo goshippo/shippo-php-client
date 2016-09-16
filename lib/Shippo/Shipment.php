@@ -45,6 +45,6 @@ class Shippo_Shipment extends Shippo_ApiResource
     {
         $class = get_class();
         $id = $params['id'];
-        return self::_scopedGet($class, $id, $params = null, $apiKey = null);
+        return self::_scopedGet($class, $id, $params, $apiKey = null);
     }
 }

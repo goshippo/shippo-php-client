@@ -6,6 +6,7 @@ require_once('lib/Shippo.php');
 
 // Replace <API-KEY> with your credentials
 Shippo::setApiKey("<API-KEY>");
+Shippo::setApiVersion("2014-02-11");
 
 // example fromAddress
 $fromAddress = array(

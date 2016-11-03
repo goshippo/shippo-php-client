@@ -174,6 +174,9 @@ class Shippo_ApiRequestor
             'Accept: application/json',
             'User-Agent: Shippo/v1 PHPBindings/' . Shippo::VERSION
         );
+        if (Shippo::getApiVersion()){
+            $headers[] = 'Shippo-API-Version: ' . Shippo::getApiVersion();
+        }
         
         list($rbody, $rcode) = $this->_curlRequest($method, $absUrl, $headers, $params);
         return array(

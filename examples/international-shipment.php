@@ -7,17 +7,24 @@ United States to an international location.
 In addition to that we know that the customer expects the
 shipment to arrive within 3 days. We now want to purchase
 the cheapest shipping label with a transit time <= 3 days.
-*/
-require_once('lib/Shippo.php');
 
-// Replace <API-KEY> with your credentials
-Shippo::setApiKey("<API-KEY>");
+Before running it, remember to do
+    composer install
+*/
+
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// or if you do not have or want the composer autoload feature do
+// require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
+
+// Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
+Shippo::setApiKey('<API-KEY>');
 
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-$fromAddress = array(
+$from_address = array(
     'object_purpose' => 'PURCHASE',
-    'name' => 'Mr Hippo"',
+    'name' => 'Mr Hippo',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
     'city' => 'San Francisco',
@@ -25,11 +32,12 @@ $fromAddress = array(
     'zip' => '94117',
     'country' => 'US',
     'phone' => '+1 555 341 9393',
-    'email' => 'mr-hippo@goshipppo.com');
+    'email' => 'mr-hippo@goshipppo.com',
+);
 
 // Example to_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-$toAddress = array(
+$to_address = array(
     'object_purpose' => 'PURCHASE',
     'name' => 'Ms Hippo',
     'company' => 'Regents Park',
@@ -38,8 +46,9 @@ $toAddress = array(
     'zip' => 'NW1 4RY',
     'country' => 'GB',
     'phone' => '+1 555 341 9393',
-    'email' => 'ms-hippo@goshipppo.com'
-	'metadata' =>  'For Order Number 123');
+    'email' => 'ms-hippo@goshipppo.com',
+	'metadata' =>  'For Order Number 123',
+);
 
 // Parcel information array
 // The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
@@ -75,53 +84,47 @@ array(
     'non_delivery_option'=> 'RETURN',
     'certify'=> 'true',
     'certify_signer'=> 'Mr Hippo',
-    'items'=> array($customs_item)
+    'items'=> array($customs_item),
 ));
 
 
-/* 
-Example shipment object
-For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
-This object has async=False, indicating that the function will wait until all rates are generated before it returns.
-By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
-*/
-
+// Example shipment object
+// For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
+// This object has async=false, indicating that the function will wait until all rates are generated before it returns.
+// By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 $shipment = Shippo_Shipment::create(
     array(
-        "object_purpose" => "PURCHASE",
-        "address_from" => $fromAddress,
-        "address_to" => $toAddress,
-        "parcel" => $parcel,
-        "customs_declaration" => $customs_declaration -> object_id,
-        "async" => False
+        'object_purpose' => 'PURCHASE',
+        'address_from' => $from_address,
+        'address_to' => $to_address,
+        'parcel' => $parcel,
+        'customs_declaration' => $customs_declaration -> object_id,
+        'async' => false,
     )
 );
 
-/* 
-Rates are stored in the `rates_list` array
-The details on the returned object are here: https://goshippo.com/docs/reference#rates
-Get the first rate in the rates results for demo purposes.
-*/
-$rate = $shipment["rates_list"][0];
+// Rates are stored in the `rates_list` array
+// The details on the returned object are here: https://goshippo.com/docs/reference#rates
+// Get the first rate in the rates results for demo purposes.
+$rate = $shipment['rates_list'][0];
 
 // Purchase the desired rate with a transaction request
-// Set async=False, indicating that the function will wait until the carrier returns a shipping label before it returns
+// Set async=false, indicating that the function will wait until the carrier returns a shipping label before it returns
 $transaction = Shippo_Transaction::create(array(
-    'rate'=> $rate["object_id"],
-    'async'=> false
+    'rate'=> $rate['object_id'],
+    'async'=> false,
 ));
 
-/* Print the shipping label from label_url 
-Get the tracking number from tracking_number
-Most international shipments require you to add 3 commercial invoices in the package's "pouch", a special envelope attached on the package. Shippo automatically creates these 3 copies for you, which will be returned in the Transaction's commercial_invoice field.
-*/
-if ($transaction["object_status"] == "SUCCESS"){
-    echo($transaction["label_url"]);
-    echo("\n");
-    echo($transaction["tracking_number"]);
+// Print the shipping label from label_url
+// Get the tracking number from tracking_number
+// Most international shipments require you to add 3 commercial invoices in the package's "pouch", a special envelope attached on the package. Shippo automatically creates these 3 copies for you, which will be returned in the Transaction's commercial_invoice field.
+if ($transaction['object_status'] == 'SUCCESS'){
+    echo "Shipping label url: " . $transaction['label_url'] . "\n";
+    echo "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {
-    foreach ($transaction["messages"] as $message) {
-        echo($message);
+    echo "Transaction failed with messages:" . "\n";
+    foreach ($transaction['messages'] as $message) {
+        echo $message . "\n";
     }
 }
 // For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our

@@ -8,6 +8,10 @@ In addition to that we know that the customer expects the
 shipment to arrive within 3 days. We now want to purchase
 the cheapest shipping label with a transit time <= 3 days.
 
+Sample output:
+--> Shipping label url: https://shippo-delivery-east.s3.amazonaws.com/785d52895d5a464cae35730a9f65ef28.pdf?Signature=TBmzL5S5mJ8BdzcacMQonaObZzE%3D&Expires=1510333519&AWSAccessKeyId=AKIAJGLCC5MYLLWIG42A
+--> Shipping tracking number: CB150465075US
+
 Before running it, remember to do
     composer install
 */
@@ -119,12 +123,12 @@ $transaction = Shippo_Transaction::create(array(
 // Get the tracking number from tracking_number
 // Most international shipments require you to add 3 commercial invoices in the package's "pouch", a special envelope attached on the package. Shippo automatically creates these 3 copies for you, which will be returned in the Transaction's commercial_invoice field.
 if ($transaction['object_status'] == 'SUCCESS'){
-    echo "Shipping label url: " . $transaction['label_url'] . "\n";
-    echo "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
+    echo "--> " . "Shipping label url: " . $transaction['label_url'] . "\n";
+    echo "--> " . "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {
     echo "Transaction failed with messages:" . "\n";
     foreach ($transaction['messages'] as $message) {
-        echo $message . "\n";
+        echo "--> " . $message . "\n";
     }
 }
 // For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our

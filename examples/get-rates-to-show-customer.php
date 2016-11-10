@@ -5,6 +5,21 @@ recipient address and parcel. We will retrieve all avail-
 able shipping rates, display them to the user and purchase
 a label after the user has selected a rate.
 
+Sample output:
+Available rates:
+--> USPS - Priority Mail Express
+  --> Amount: 28.31
+  --> Days to delivery: 1
+--> USPS - Priority Mail
+  --> Amount: 6.25
+  --> Days to delivery: 2
+--> USPS - Parcel Select
+  --> Amount: 6.72
+  --> Days to delivery: 7
+
+--> Shipping label url: https://shippo-delivery-east.s3.amazonaws.com/fb199cfef3164852bf0eea04c082ba6e.pdf?Signature=rMndAoIyKPekw7PZtwzrnOqFlOY%3D&Expires=1510333434&AWSAccessKeyId=AKIAJGLCC5MYLLWIG42A
+--> Shipping tracking number: 9205590164917330560380
+
 Before running it, remember to do
     composer install
 */
@@ -84,10 +99,11 @@ $rates = $shipment['rates_list'];
 // The details on all of the fields in the returned object are here: https://goshippo.com/docs/reference#rates
 echo "Available rates:" . "\n";
 foreach ($rates as $rate) {
-    echo $rate['provider'] . " - " . $rate['servicelevel_name'] . "\n";
-    echo "\t" . "Amount: "             . $rate['amount'] . "\n";
-    echo "\t" . "Days to delivery: "   . $rate['days'] . "\n";
+    echo "--> " . $rate['provider'] . " - " . $rate['servicelevel_name'] . "\n";
+    echo "  --> " . "Amount: "             . $rate['amount'] . "\n";
+    echo "  --> " . "Days to delivery: "   . $rate['days'] . "\n";
 }
+echo "\n";
 
 // This would be the index of the rate selected by the user
 $selected_rate_index = 1;
@@ -107,12 +123,12 @@ $transaction = Shippo_Transaction::create(array(
 // Print the shipping label from label_url
 // Get the tracking number from tracking_number
 if ($transaction['object_status'] == 'SUCCESS'){
-    echo "Shipping label url: " . $transaction['label_url'] . "\n";
-    echo "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
+    echo "--> " . "Shipping label url: " . $transaction['label_url'] . "\n";
+    echo "--> " . "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {
     echo "Transaction failed with messages:" . "\n";
     foreach ($transaction['messages'] as $message) {
-        echo $message . "\n";
+        echo "--> " . $message . "\n";
     }
 }
 // For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our

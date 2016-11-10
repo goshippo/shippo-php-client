@@ -10,16 +10,16 @@ transit time windows (next day, 3 days, 7 days).
 Sample output:
 For a delivery window of 1 days:
 --> Min. costs: 5.81
---> Max. costs: 106.85
---> Avg. costs: 46.91
+--> Max. costs: 36.14
+--> Avg. costs: 24.6875
 For a delivery window of 3 days:
 --> Min. costs: 5.81
---> Max. costs: 106.85
---> Avg. costs: 34.99
+--> Max. costs: 36.14
+--> Avg. costs: 19.411666666667
 For a delivery window of 7 days:
---> Min. costs: 3.22
---> Max. costs: 106.85
---> Avg. costs: 29.95
+--> Min. costs: 5.81
+--> Max. costs: 36.14
+--> Avg. costs: 16.158888888889
 
 Before running it, remember to do
     composer install
@@ -32,7 +32,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
 Shippo::setApiKey('<API-KEY>');
-
 
 // Define delivery windows in max. days
 // Pick an east coast, a west coast and a mid-west destination
@@ -101,12 +100,12 @@ foreach ($shipments as $shipment) {
 // the $delivery_window, and returns the rates estimation
 function calculate_rates_estimation($rates, $delivery_window) {
     // Filter rates by delivery window
-    $eligible_rates = array_filter(
+    $eligible_rates = array_values(array_filter(
         $rates,
         function($rate) use($delivery_window){
             return $rate['days'] <= $delivery_window;
         }
-    );
+    ));
 
     // Calcualte estimations on the eligible_rates
     $min = $eligible_rates[0]['amount'];
@@ -133,8 +132,8 @@ foreach ($delivery_windows as $delivery_window) {
     $estimations = calculate_rates_estimation($all_rates, $delivery_window);
 
     echo "For a delivery window of {$delivery_window} days:" . "\n";
-    echo "\t" . "Min. costs: " . $estimations['min'] . "\n";
-    echo "\t" . "Max. costs: " . $estimations['max'] . "\n";
-    echo "\t" . "Avg. costs: " . $estimations['average'] . "\n";
+    echo "--> " . "Min. costs: " . $estimations['min'] . "\n";
+    echo "--> " . "Max. costs: " . $estimations['max'] . "\n";
+    echo "--> " . "Avg. costs: " . $estimations['average'] . "\n";
 }
 ?>

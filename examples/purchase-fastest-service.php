@@ -5,6 +5,10 @@ recipient address and parcel information that we need to ship.
 We want to get the parcel to the customer as soon as possible, 
 with a max delivery time of 3 days.
 
+Sample output:
+--> Shipping label url: https://shippo-delivery-east.s3.amazonaws.com/8c552d19629b4556ad98d00609c93b2d.pdf?Signature=5oeRPPnfsUVXCg1MSobRlIzvWfU%3D&Expires=1510333540&AWSAccessKeyId=AKIAJGLCC5MYLLWIG42A
+--> Shipping tracking number: 9270190164917300871702
+
 Before running it, remember to do
     composer install
 */
@@ -76,12 +80,12 @@ array(
 // Filter rates by MAX_TRANSIT_TIME_DAYS
 // Rates are stored in the `rates_list` array
 // The details on the returned object are here: https://goshippo.com/docs/reference#rates
-$eligible_rates = array_filter(
+$eligible_rates = array_values(array_filter(
     $shipment['rates_list'],
     function($rate){
         return $rate['days'] <= MAX_TRANSIT_TIME_DAYS;
     }
-);
+));
 
 // Select the fastest from eligible service levels
 usort($eligible_rates, function($a, $b) {
@@ -100,12 +104,12 @@ $transaction = Shippo_Transaction::create(array(
 // Get the tracking number from tracking_number
 // Description of the full returned transaction https://goshippo.com/docs/reference#transactions
 if ($transaction['object_status'] == 'SUCCESS'){
-    echo "Shipping label url: " . $transaction['label_url'] . "\n";
-    echo "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
+    echo "--> " . "Shipping label url: " . $transaction['label_url'] . "\n";
+    echo "--> " . "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {
     echo "Transaction failed with messages:" . "\n";
     foreach ($transaction['messages'] as $message) {
-        echo $message . "\n";
+        echo "--> " . $message . "\n";
     }
 }
 // For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our

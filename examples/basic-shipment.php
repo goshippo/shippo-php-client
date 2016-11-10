@@ -3,6 +3,10 @@
 In this tutorial we have an order with a sender address,
 recipient address and parcel information that we need to ship.
 
+Sample output:
+--> Shipping label url: https://shippo-delivery-east.s3.amazonaws.com/d8ccb0c1af914aecb3bbf2ab72473c47.pdf?Signature=RbShGcdC9DVaiCXsATn8%2Fq9Fko0%3D&Expires=1510333193&AWSAccessKeyId=AKIAJGLCC5MYLLWIG42A
+--> Shipping tracking number: 9270190164917300871696
+
 Before running it, remember to do
     composer install
 */
@@ -84,12 +88,12 @@ $transaction = Shippo_Transaction::create(array(
 // Print the shipping label from label_url
 // Get the tracking number from tracking_number
 if ($transaction['object_status'] == 'SUCCESS'){
-    echo "Shipping label url: " . $transaction['label_url'] . "\n";
-    echo "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
+    echo "--> " . "Shipping label url: " . $transaction['label_url'] . "\n";
+    echo "--> " . "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {
     echo "Transaction failed with messages:" . "\n";
     foreach ($transaction['messages'] as $message) {
-        echo $message . "\n";
+        echo "--> " . $message . "\n";
     }
 }
 // For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our

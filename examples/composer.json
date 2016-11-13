@@ -1,0 +1,5 @@
+{
+    "require": {
+        "shippo/shippo-php": "1.*"
+    }
+}

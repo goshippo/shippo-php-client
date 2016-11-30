@@ -35,8 +35,21 @@ Print a shipping label in 10 mins using our default USPS and DHL Express account
     
         require_once('/path/to/vendor/shippo/shippo-php/lib/Shippo.php');
 
-### Installing using Laravel 
-[bmartus](https://github.com/bmartus) created an awesome Laravel 5.2 wrapper, [check it out here](https://github.com/bmartus/laravel-shippo).
+### Installing using Laravel
+
+In Laravel you can install the library as normal. Then within you `app/Providers/AppServiceProvider.php` file's `boot()` method add the following:
+
+```php
+\Shippo::setApiKey(env('SHIPPO_API_KEY'));
+```
+
+To take advantage of configuration caching, you can set a config parameter in `config/services.php` and retrieve your API key through the configuration.
+
+```php
+\Shippo::setApiKey($this->app['config']['services.shippo.key']);
+```
+
+From here you can use the Shippo library anywhere in your application without setting the key when accessing it.
 
 ## Getting Started
 

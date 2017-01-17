@@ -1,4 +1,5 @@
 #Shippo PHP API wrapper
+[![Build Status](https://travis-ci.org/goshippo/shippo-php-client.svg)](https://travis-ci.org/goshippo/shippo-php-client)
 
 Shippo is a shipping API that connects you with [multiple shipping carriers](https://goshippo.com/carriers/) (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many others) through one interface.
 

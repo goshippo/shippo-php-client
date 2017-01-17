@@ -38,16 +38,6 @@ class Shippo_ManifestTest extends TestCase
         $this->assertFalse(is_null($list->count));
         $this->assertFalse(is_null($list->results));
     }
-    
-    public function testListPageSize()
-    {
-        $pagesize = 1;
-        $list = Shippo_Manifest::all(array(
-            'results' => $pagesize,
-            'page' => '1'
-        ));
-        $this->assertEquals(count($list->results), $pagesize);
-    }
 
     private function manifestCreateResponse($carrier_account, $submission_date)
     {

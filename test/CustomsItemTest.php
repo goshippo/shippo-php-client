@@ -57,7 +57,6 @@ class Shippo_CustomsItemTest extends TestCase
     
     public static function getDefaultCustomsItem()
     {
-        parent::setTestApiKey();
         return Shippo_CustomsItem::create(array(
             'description' => 'T-Shirt',
             'quantity' => '2',

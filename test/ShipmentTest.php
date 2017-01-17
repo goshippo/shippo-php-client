@@ -57,7 +57,6 @@ class Shippo_ShipmentTest extends TestCase
     
     public static function getDefaultShipment()
     {
-        parent::setTestApiKey();
         $addressFrom = Shippo_AddressTest::getDefaultAddress();
         $addressTo = Shippo_AddressTest::getDefaultAddress();
         $parcel = Shippo_ParcelTest::getDefaultParcel();

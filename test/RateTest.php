@@ -31,7 +31,6 @@ class Shippo_RateTest extends TestCase
     
     public static function getDefaultRate()
     {
-        parent::setTestApiKey();
         $shipment = Shippo_ShipmentTest::getDefaultShipment();
         try {
             Shippo_Shipment::get_shipping_rates(array(

@@ -82,7 +82,6 @@ class Shippo_AddressTest extends TestCase
     
     public static function getDefaultAddress()
     {
-        parent::setTestApiKey();
         return Shippo_Address::create(array(
             'object_purpose' => 'QUOTE',
             'name' => 'John Smith',

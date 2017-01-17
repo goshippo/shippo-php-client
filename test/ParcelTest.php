@@ -56,7 +56,6 @@ class Shippo_ParcelTest extends TestCase
     
     public static function getDefaultParcel()
     {
-        parent::setTestApiKey();
         return Shippo_Parcel::create(array(
             'length' => '5',
             'width' => '5',

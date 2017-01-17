@@ -57,7 +57,6 @@ class Shippo_CustomsDeclarationTest extends TestCase
     
     public static function getDefaultCustomsDeclaration()
     {
-        parent::setTestApiKey();
         $customsItem = Shippo_CustomsItemTest::getDefaultCustomsItem();
         return Shippo_CustomsDeclaration::create(array(
             'exporter_reference' => '',

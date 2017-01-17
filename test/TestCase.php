@@ -5,25 +5,26 @@ require 'vendor/autoload.php';
 // Base class for test cases
 class TestCase extends \PHPUnit_Framework_TestCase
 {
-    const SHIPPO_TOKEN = '924279d5bda97eff28529f264eb14d2646dd3d94';
+    const SHIPPO_KEY = '<YOUR SHIPPO API KEY>';
 
     //mock curl client for mocking requests
     private $mock;
 
     protected function setUp()
     {
-        //TODO only set api key for api tests
-        self::setTestApiKey();
+        self::authFromEnv();
         Shippo_ApiRequestor::setHttpClient(CurlClient::instance());
         $this->mock = null;
     }
-    
-    // Used to allow classes extending to set their API Key for testing
-    protected static function setTestApiKey()
+
+    protected static function authFromEnv()
     {
-        // Test Shippo API token to be used for testing
-        // TODO change to env variable?
-        Shippo::setApiKey(self::SHIPPO_TOKEN);
+        $apiKey = getenv('SHIPPO_API_KEY');
+        if (!$apiKey) {
+            $apiKey = self::SHIPPO_KEY;
+        }
+
+        Shippo::setApiKey($apiKey);
     }
 
     protected function mockRequest($method, $path, $params = array(), 

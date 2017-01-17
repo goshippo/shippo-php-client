@@ -8,10 +8,5 @@ php:
  - 7.0
  - hhvm
 
-env:
- - AUTOLOAD=1
- - AUTOLOAD=0
+install: composer install
 
-script: ./build.php ${AUTOLOAD}
-after_script: ./vendor/bin/coveralls -v
-sudo: false

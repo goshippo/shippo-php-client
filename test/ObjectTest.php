@@ -1,12 +1,12 @@
 <?php
 
-class Shippo_ObjectTest extends UnitTestCase
+class Shippo_ObjectTest extends TestCase
 {
     public function testArrayAccessorsSemantics()
     {
         $s = new Shippo_Object();
         $s['foo'] = 'a';
-        $this->assertEqual($s['foo'], 'a');
+        $this->assertEquals($s['foo'], 'a');
         $this->assertTrue(isset($s['foo']));
         unset($s['foo']);
         $this->assertFalse(isset($s['foo']));
@@ -16,7 +16,7 @@ class Shippo_ObjectTest extends UnitTestCase
     {
         $s = new Shippo_Object();
         $s->foo = 'a';
-        $this->assertEqual($s->foo, 'a');
+        $this->assertEquals($s->foo, 'a');
         $this->assertTrue(isset($s->foo));
         unset($s->foo);
         $this->assertFalse(isset($s->foo));
@@ -26,17 +26,17 @@ class Shippo_ObjectTest extends UnitTestCase
     {
         $s = new Shippo_Object();
         $s->foo = 'a';
-        $this->assertEqual($s['foo'], 'a');
+        $this->assertEquals($s['foo'], 'a');
         
         $s['bar'] = 'b';
-        $this->assertEqual($s->bar, 'b');
+        $this->assertEquals($s->bar, 'b');
     }
     
     public function testKeys()
     {
         $s = new Shippo_Object();
         $s->foo = 'a';
-        $this->assertEqual($s->keys(), array(
+        $this->assertEquals($s->keys(), array(
             'foo'
         ));
     }

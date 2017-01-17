@@ -1,11 +1,11 @@
 <?php
 
-class Shippo_CustomsItemTest extends Shippo_Test
+class Shippo_CustomsItemTest extends TestCase
 {
     public function testValidCreate()
     {
         $customsItem = self::getDefaultCustomsItem();
-        $this->assertEqual($customsItem->object_state, 'VALID');
+        $this->assertEquals($customsItem->object_state, 'VALID');
     }
     
     public function testInvalidCreate()
@@ -16,7 +16,7 @@ class Shippo_CustomsItemTest extends Shippo_Test
             ));
         }
         catch (Exception $e) {
-            $this->pass();
+            $this->assertTrue(true);
         }
         
     }
@@ -25,14 +25,14 @@ class Shippo_CustomsItemTest extends Shippo_Test
     {
         $customsItem = self::getDefaultCustomsItem();
         $retrieve_customsItem = Shippo_CustomsItem::retrieve($customsItem->object_id);
-        $this->assertEqual($retrieve_customsItem->object_id, $customsItem->object_id);
+        $this->assertEquals($retrieve_customsItem->object_id, $customsItem->object_id);
     }
     
     public function testInvalidRetrieve()
     {
         $customsItem = self::getDefaultCustomsItem();
         $retrieve_customsItem = Shippo_CustomsItem::retrieve($customsItem->object_id);
-        $this->assertNotEqual($retrieve_customsItem->object_id, 'Invalid Value');
+        $this->assertNotEquals($retrieve_customsItem->object_id, 'Invalid Value');
     }
     
     public function testListAll()
@@ -52,12 +52,11 @@ class Shippo_CustomsItemTest extends Shippo_Test
             'results' => $pagesize,
             'page' => '1'
         ));
-        $this->assertEqual(count($list->results), $pagesize);
+        $this->assertEquals(count($list->results), $pagesize);
     }
     
     public static function getDefaultCustomsItem()
     {
-        parent::setTestApiKey();
         return Shippo_CustomsItem::create(array(
             'description' => 'T-Shirt',
             'quantity' => '2',

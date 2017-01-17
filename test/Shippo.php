@@ -26,16 +26,17 @@ error_reporting(E_ALL | E_STRICT);
 // Shippo Library
 require_once(dirname(__FILE__) . '/../lib/Shippo.php');
 // Base Class that all tests extend, extends UnitTestCase
-require_once(dirname(__FILE__) . '/Shippo/ShippoTest.php');
-
+require_once(dirname(__FILE__) . '/Shippo/TestCase.php');
+// Shippo Library Tests
+require_once(dirname(__FILE__) . '/Shippo/ShippoBaseTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ApiRequestorTest.php');
 require_once(dirname(__FILE__) . '/Shippo/AuthenticationErrorTest.php');
-require_once(dirname(__FILE__) . '/Shippo/Error.php');
+require_once(dirname(__FILE__) . '/Shippo/CurlClientTest.php');
+require_once(dirname(__FILE__) . '/Shippo/ErrorTest.php');
 require_once(dirname(__FILE__) . '/Shippo/InvalidRequestErrorTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ObjectTest.php');
 require_once(dirname(__FILE__) . '/Shippo/UtilTest.php');
-//
-// // // Shippo API Tests
+// Shippo API Wrapper Tests
 require_once(dirname(__FILE__) . '/Shippo/AddressTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ParcelTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ShipmentTest.php');
@@ -46,4 +47,5 @@ require_once(dirname(__FILE__) . '/Shippo/CustomsDeclarationTest.php');
 require_once(dirname(__FILE__) . '/Shippo/RefundTest.php');
 require_once(dirname(__FILE__) . '/Shippo/ManifestTest.php');
 require_once(dirname(__FILE__) . '/Shippo/CarrierAccountTest.php');
+require_once(dirname(__FILE__) . '/Shippo/TrackTest.php');
 

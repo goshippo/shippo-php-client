@@ -107,7 +107,7 @@ function calculate_rates_estimation($rates, $delivery_window) {
         }
     ));
 
-    // Calcualte estimations on the eligible_rates
+    // Calculate estimations on the eligible_rates
     $min = $eligible_rates[0]['amount'];
     $max = 0.0;
     $sum = 0.0;

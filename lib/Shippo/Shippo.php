@@ -3,7 +3,7 @@
 abstract class Shippo
 {
     /**
-     * @var string The Shippo API key to be used for requests.
+     * @var string The Shippo API key to be used for requests. 
      */
     public static $apiKey;
     /**

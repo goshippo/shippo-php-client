@@ -20,7 +20,7 @@ class Shippo_List extends Shippo_Object
     {
         $requestor = new Shippo_ApiRequestor($this->_apiKey);
         $base = $this['url'];
-        $id = Shippo_ApiRequestor::utf8($id);
+        $id = Shippo_Util::utf8($id);
         $extn = urlencode($id);
         list($response, $apiKey) = $requestor->request('get', "$base/$extn", $params);
         return Shippo_Util::convertToShippoObject($response, $apiKey);

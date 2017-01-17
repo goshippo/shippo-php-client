@@ -1,11 +1,11 @@
 <?php
 
-class Shippo_CustomsDeclarationTest extends Shippo_Test
+class Shippo_CustomsDeclarationTest extends TestCase
 {
     public function testValidCreate()
     {
         $customsDeclaration = self::getDefaultCustomsDeclaration();
-        $this->assertEqual($customsDeclaration->object_state, 'VALID');
+        $this->assertEquals($customsDeclaration->object_state, 'VALID');
     }
     
     public function testInvalidCreate()
@@ -16,7 +16,7 @@ class Shippo_CustomsDeclarationTest extends Shippo_Test
             ));
         }
         catch (Exception $e) {
-            $this->pass();
+            $this->assertTrue(true);
         }
         
     }
@@ -25,14 +25,14 @@ class Shippo_CustomsDeclarationTest extends Shippo_Test
     {
         $customsDeclaration = self::getDefaultCustomsDeclaration();
         $retrieve_customsDeclaration = Shippo_CustomsDeclaration::retrieve($customsDeclaration->object_id);
-        $this->assertEqual($retrieve_customsDeclaration->object_id, $customsDeclaration->object_id);
+        $this->assertEquals($retrieve_customsDeclaration->object_id, $customsDeclaration->object_id);
     }
     
     public function testInvalidRetrieve()
     {
         $customsDeclaration = self::getDefaultCustomsDeclaration();
         $retrieve_customsDeclaration = Shippo_CustomsDeclaration::retrieve($customsDeclaration->object_id);
-        $this->assertNotEqual($retrieve_customsDeclaration->object_id, 'Invalid Value');
+        $this->assertNotEquals($retrieve_customsDeclaration->object_id, 'Invalid Value');
     }
     
     public function testListAll()
@@ -52,12 +52,11 @@ class Shippo_CustomsDeclarationTest extends Shippo_Test
             'results' => $pagesize,
             'page' => '1'
         ));
-        $this->assertEqual(count($list->results), $pagesize);
+        $this->assertEquals(count($list->results), $pagesize);
     }
     
     public static function getDefaultCustomsDeclaration()
     {
-        parent::setTestApiKey();
         $customsItem = Shippo_CustomsItemTest::getDefaultCustomsItem();
         return Shippo_CustomsDeclaration::create(array(
             'exporter_reference' => '',

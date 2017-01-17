@@ -1,6 +1,6 @@
 <?php
 
-class Shippo_AuthenticationErrorTest extends UnitTestCase
+class Shippo_AuthenticationErrorTest extends TestCase
 {
     public function testInvalidCredentials()
     {
@@ -10,7 +10,7 @@ class Shippo_AuthenticationErrorTest extends UnitTestCase
             $address = Shippo_Address::create();
         }
         catch (Shippo_AuthenticationError $e) {
-            $this->assertEqual(401, $e->getHttpStatus());
+            $this->assertEquals(401, $e->getHttpStatus());
         }
     }
 }

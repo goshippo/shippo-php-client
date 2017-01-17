@@ -69,7 +69,7 @@ abstract class Shippo_ApiResource extends Shippo_Object
             $message = "Could not determine which URL to request: " . "$class instance has invalid ID: $id";
             throw new Shippo_InvalidRequestError($message, null);
         }
-        $id = Shippo_ApiRequestor::utf8($id);
+        $id = Shippo_Util::utf8($id);
         $base = $this->_lsb('classUrl', $class);
         $extn = urlencode($id);
         return "$base/$extn";
@@ -134,6 +134,16 @@ abstract class Shippo_ApiResource extends Shippo_Object
         $requestor = new Shippo_ApiRequestor($apiKey);
         $url = self::_scopedLsb($class, 'classUrl', $class) . "/" . $id . "/validate/";
         list($response, $apiKey) = $requestor->request('get', $url, $params);
+        return Shippo_Util::convertToShippoObject($response, $apiKey);
+    }
+
+    //Special case for Tracking Status
+    protected static function _scopedGetStatus($class, $id, $params = null, $apiKey = null)
+    {
+        self::_validateCall('create', $params, $apiKey);
+        $requestor = new Shippo_ApiRequestor($apiKey);
+        $url = self::_scopedLsb($class, 'classUrl', $class) . "/{$params['carrier']}/" . $id;
+        list($response, $apiKey) = $requestor->request('get', $url, array());
         return Shippo_Util::convertToShippoObject($response, $apiKey);
     }
 }

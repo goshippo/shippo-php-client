@@ -1,12 +1,12 @@
 <?php
 
-class Shippo_ShipmentTest extends Shippo_Test
+class Shippo_ShipmentTest extends TestCase
 {
     
     public function testValidCreate()
     {
         $shipment = self::getDefaultShipment();
-        $this->assertEqual($shipment->object_state, 'VALID');
+        $this->assertEquals($shipment->object_state, 'VALID');
     }
     
     public function testInvalidCreate()
@@ -17,7 +17,7 @@ class Shippo_ShipmentTest extends Shippo_Test
             ));
         }
         catch (Exception $e) {
-            $this->pass();
+            $this->assertTrue(true);
         }
     }
     
@@ -25,14 +25,14 @@ class Shippo_ShipmentTest extends Shippo_Test
     {
         $shipment = self::getDefaultShipment();
         $retrieve_shipment = Shippo_Shipment::retrieve($shipment->object_id);
-        $this->assertEqual($retrieve_shipment->object_id, $shipment->object_id);
+        $this->assertEquals($retrieve_shipment->object_id, $shipment->object_id);
     }
     
     public function testInvalidRetrieve()
     {
         $shipment = self::getDefaultShipment();
         $retrieve_shipment = Shippo_Shipment::retrieve($shipment->object_id);
-        $this->assertNotEqual($retrieve_shipment->object_id, 'Invalid Value');
+        $this->assertNotEquals($retrieve_shipment->object_id, 'Invalid Value');
     }
     
     public function testListAll()
@@ -52,7 +52,7 @@ class Shippo_ShipmentTest extends Shippo_Test
             'results' => $pagesize,
             'page' => '1'
         ));
-        $this->assertEqual(count($list->results), $pagesize);
+        $this->assertEquals(count($list->results), $pagesize);
     }
     
     public static function getDefaultShipment()

@@ -1,6 +1,6 @@
 <?php
 
-class Shippo_RateTest extends Shippo_Test
+class Shippo_RateTest extends TestCase
 {
     
     public function testValidCreate()
@@ -26,7 +26,7 @@ class Shippo_RateTest extends Shippo_Test
             'results' => $pagesize,
             'page' => '1'
         ));
-        $this->assertEqual(count($list->results), $pagesize);
+        $this->assertEquals(count($list->results), $pagesize);
     }
     
     public static function getDefaultRate()

@@ -1,6 +1,6 @@
 <?php
 
-class Shippo_ErrorTest extends UnitTestCase
+class Shippo_ErrorTest extends TestCase
 {
     public function testCreation()
     {
@@ -11,10 +11,10 @@ class Shippo_ErrorTest extends UnitTestCase
             $this->fail("Did not raise error");
         }
         catch (Shippo_Error $e) {
-            $this->assertEqual("hello", $e->getMessage());
-            $this->assertEqual(500, $e->getHttpStatus());
-            $this->assertEqual("{'foo':'bar'}", $e->getHttpBody());
-            $this->assertEqual(array(
+            $this->assertEquals("hello", $e->getMessage());
+            $this->assertEquals(500, $e->getHttpStatus());
+            $this->assertEquals("{'foo':'bar'}", $e->getHttpBody());
+            $this->assertEquals(array(
                 'foo' => 'bar'
             ), $e->getJsonBody());
         }

@@ -1,11 +1,11 @@
 <?php
 
-class Shippo_ParcelTest extends Shippo_Test
+class Shippo_ParcelTest extends TestCase
 {
     public function testValidCreate()
     {
         $parcel = self::getDefaultParcel();
-        $this->assertEqual($parcel->object_state, 'VALID');
+        $this->assertEquals($parcel->object_state, 'VALID');
     }
     
     public function testInvalidCreate()
@@ -16,7 +16,7 @@ class Shippo_ParcelTest extends Shippo_Test
             ));
         }
         catch (Exception $e) {
-            $this->pass();
+            $this->assertTrue(true);
         }
     }
     
@@ -24,14 +24,14 @@ class Shippo_ParcelTest extends Shippo_Test
     {
         $parcel = self::getDefaultParcel();
         $retrieve_parcel = Shippo_Parcel::retrieve($parcel->object_id);
-        $this->assertEqual($retrieve_parcel->object_id, $parcel->object_id);
+        $this->assertEquals($retrieve_parcel->object_id, $parcel->object_id);
     }
     
     public function testInvalidRetrieve()
     {
         $parcel = self::getDefaultParcel();
         $retrieve_parcel = Shippo_Parcel::retrieve($parcel->object_id);
-        $this->assertNotEqual($retrieve_parcel->object_id, 'Invalid Value');
+        $this->assertNotEquals($retrieve_parcel->object_id, 'Invalid Value');
     }
     
     public function testListAll()
@@ -51,7 +51,7 @@ class Shippo_ParcelTest extends Shippo_Test
             'results' => $pagesize,
             'page' => '1'
         ));
-        $this->assertEqual(count($list->results), $pagesize);
+        $this->assertEquals(count($list->results), $pagesize);
     }
     
     public static function getDefaultParcel()

@@ -1,11 +1,11 @@
 <?php
 
-class Shippo_AddressTest extends Shippo_Test
+class Shippo_AddressTest extends TestCase
 {
     public function testValidCreate()
     {
         $address = self::getDefaultAddress();
-        $this->assertEqual($address->object_state, 'VALID');
+        $this->assertEquals($address->object_state, 'VALID');
     }
 
     public function testResidentialCreate()
@@ -26,7 +26,7 @@ class Shippo_AddressTest extends Shippo_Test
             'metadata' => 'Customer ID 234;234',
             'is_residential' => true
         ));
-        $this->assertEqual($address->object_state, 'VALID');
+        $this->assertEquals($address->object_state, 'VALID');
     }
     
     public function testInvalidCreate()
@@ -43,21 +43,21 @@ class Shippo_AddressTest extends Shippo_Test
             'email' => 'jmercouris@iit.com',
             'metadata' => 'Customer ID 234;234'
         ));
-        $this->assertEqual($address->object_state, 'INCOMPLETE');
+        $this->assertEquals($address->object_state, 'INCOMPLETE');
     }
     
     public function testRetrieve()
     {
         $address = self::getDefaultAddress();
         $retrieve_address = Shippo_Address::retrieve($address->object_id);
-        $this->assertEqual($retrieve_address->object_id, $address->object_id);
+        $this->assertEquals($retrieve_address->object_id, $address->object_id);
     }
     
     public function testInvalidRetrieve()
     {
         $address = self::getDefaultAddress();
         $retrieve_address = Shippo_Address::retrieve($address->object_id);
-        $this->assertNotEqual($retrieve_address->object_id, 'Invalid Value');
+        $this->assertNotEquals($retrieve_address->object_id, 'Invalid Value');
     }
     
     public function testListAll()
@@ -77,7 +77,7 @@ class Shippo_AddressTest extends Shippo_Test
             'results' => $pagesize,
             'page' => '1'
         ));
-        $this->assertEqual(count($list->results), $pagesize);
+        $this->assertEquals(count($list->results), $pagesize);
     }
     
     public static function getDefaultAddress()

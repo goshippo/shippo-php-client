@@ -75,4 +75,19 @@ abstract class Shippo_Util
             return $resp;
         }
     }
+
+    /**
+     * @param string|mixed $value A string to UTF8-encode.
+     *
+     * @returns string|mixed The UTF8-encoded string, or the object passed in if
+     *    it wasn't a string.
+     */
+    public static function utf8($value)
+    {
+        if (is_string($value) && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8") {
+            return utf8_encode($value);
+        } else {
+            return $value;
+        }
+    }
 }

@@ -27,7 +27,7 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "simpletest/simpletest": "*"
+    "phpunit/phpunit": "5.5.*"
   },
   "autoload": {
     "classmap": ["lib/Shippo/"]

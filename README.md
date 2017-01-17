@@ -7,7 +7,7 @@ Print a shipping label in 10 mins using our default USPS and DHL Express account
 
 ## Requirements
 
-* PHP 5.2 or later.
+* PHP 5.6 or later.
 
 * [Shippo account](https://goshippo.com/) - free to sign up, free to use the API. Only pay to print a live label, test labels are free. 
 

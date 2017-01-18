@@ -15,7 +15,8 @@ class Shippo_Shipment extends Shippo_ApiResource
     }
     
     /**
-     * @param array|null $params
+     * @param string $id
+     * @param string|null $apiKey
      *
      * @return Shippo_Retrieve Get a Shipment.
      */
@@ -27,6 +28,7 @@ class Shippo_Shipment extends Shippo_ApiResource
     
     /**
      * @param array|null $params
+     * @param string|null $apiKey
      *
      * @return Shippo_All Get all the Shipments.
      */
@@ -38,6 +40,7 @@ class Shippo_Shipment extends Shippo_ApiResource
     
     /**
      * @param array|null $params
+     * @param string|null $apiKey
      *
      * @return Shippo_Get_Shipping_Rates Get the rates for a Shipment.
      */

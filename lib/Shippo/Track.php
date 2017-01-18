@@ -28,6 +28,7 @@ class Shippo_Track extends Shippo_ApiResource
     
     /**
      * @param array|null $params
+     * @param string|null $apiKey
      *
      * @return Shippo_Get_Status Get the tracking status of a Shipment.
      */

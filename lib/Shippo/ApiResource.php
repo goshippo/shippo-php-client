@@ -146,4 +146,32 @@ abstract class Shippo_ApiResource extends Shippo_Object
         list($response, $apiKey) = $requestor->request('get', $url, array());
         return Shippo_Util::convertToShippoObject($response, $apiKey);
     }
+
+    protected static function _scopedAddBatch($class, $id, $params = null, $apiKey = null)
+    {
+        self::_validateCall('add', $params, $apiKey);
+        $requestor = new Shippo_ApiRequestor($apiKey);
+        $url = self::_scopedLsb($class, 'classUrl', $class) . "/" . $id ."/" . 'add_shipments/';
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        return Shippo_Util::convertToShippoObject($response, $apiKey);
+    }
+
+    protected static function _scopedRemoveBatch($class, $id, $params = null, $apiKey = null)
+    {
+        self::_validateCall('add', $params, $apiKey);
+        $requestor = new Shippo_ApiRequestor($apiKey);
+        $url = self::_scopedLsb($class, 'classUrl', $class) . "/" . $id ."/" .  'remove_shipments/';
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        return Shippo_Util::convertToShippoObject($response, $apiKey);   
+    }
+
+    protected static function _scopedPurchaseBatch($class, $id, $apiKey = null)
+    {
+        self::_validateCall('purchase', null, $apiKey);
+        $requestor = new Shippo_ApiRequestor($apiKey);
+        $url = self::_scopedLsb($class, 'classUrl', $class) . "/" . $id ."/" .  'purchase/';
+        list($response, $apiKey) = $requestor->request('post', $url, null);
+        return Shippo_Util::convertToShippoObject($response, $apiKey);   
+    }
+
 }

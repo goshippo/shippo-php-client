@@ -47,3 +47,5 @@ require(dirname(__FILE__) . '/Shippo/Refund.php');
 require(dirname(__FILE__) . '/Shippo/Manifest.php');
 require(dirname(__FILE__) . '/Shippo/CarrierAccount.php');
 require(dirname(__FILE__) . '/Shippo/Track.php');
+require(dirname(__FILE__) . '/Shippo/Batch.php');
+

@@ -71,7 +71,7 @@ Shippo::setApiKey('<API-KEY>');
 
 //Example data to create a batch shipment
 //The complete reference to batch shipment creation is available here: https://goshippo.com/docs/reference#batches-create
-$carrier = '<YOUR CARRIER ACCOUNT PRIVATE KEY>'
+$carrier = '<YOUR CARRIER ACCOUNT PRIVATE KEY>';
 $data = array(
     'default_carrier_account' => $carrier,
     'default_servicelevel_token' => 'usps_priority',
@@ -182,11 +182,18 @@ echo "--> " . "Shipment created with id: " . $shipment['object_id'] . "\n";
 
 //Example of retrieving a batch object to check its validation status
 //For complete reference to the retrieve endpoint: https://goshippo.com/docs/reference#batches-retrieve
-$retrieved_batch = Shippo_Batch::retrieve($batch['object_id']);
-echo "--> " . "Batch object " . $retrieved_batch['object_id'] . " has status " . $retrieved_batch['object_status'] . "\n";
-if ($retrieved_batch['object_status'] != 'VALID') {
-    echo 'Waiting for the batch to validate' . "\n";
-    sleep(5);
+//This method of polling the batch validation status is for demo purposes only
+//In practice it is advised to use the batch-create webhook in the user api dashboard: https://app.goshippo.com/api/
+$MAX_TIMEOUT = 10;
+$counter = 0;
+while ($counter < $MAX_TIMEOUT) {
+    $retrieved_batch = Shippo_Batch::retrieve($batch['object_id']);
+    if ($retrieved_batch['object_status'] == 'VALID') {
+        break;
+    } else {
+        $counter = $counter + 1;
+        sleep(1);
+    }
 }
 $retrieved_batch2 = Shippo_Batch::retrieve($batch['object_id']);
 if ($retrieved_batch2['object_status'] == 'VALID') {

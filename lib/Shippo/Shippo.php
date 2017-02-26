@@ -17,7 +17,7 @@ abstract class Shippo
     /**
      * @var boolean Defaults to true.
      */
-    public static $verifySslCerts = false;
+    public static $verifySslCerts = true;
     const VERSION = '0.0.1';
     
     /**

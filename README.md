@@ -53,7 +53,7 @@ To take advantage of configuration caching, you can set a config parameter in `c
 From here you can use the Shippo library anywhere in your application without setting the key when accessing it.
 
 ###Testing
-After install the dependancies above, the test suite may be run:
+After installing the dependencies above, the test suite may be run:
 
         ./vendor/bin/phpunit
 

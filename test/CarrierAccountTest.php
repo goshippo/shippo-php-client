@@ -53,8 +53,10 @@ class Shippo_CarrierAccountTest extends TestCase
 		}
 		$parameters = array(
 			'carrier' => 'fedex',
-			'account_id' => $account_id,
-			'parameters' => array('meter' => '1234'),
+			'account_id' =>  strval($account_id),
+			'parameters' => array( 
+				'meter' => '1234',
+				),
 			'test' => true,
 			'active' => false
 		);

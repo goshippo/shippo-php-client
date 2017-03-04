@@ -54,9 +54,7 @@ class Shippo_CarrierAccountTest extends TestCase
 		$parameters = array(
 			'carrier' => 'fedex',
 			'account_id' =>  strval($account_id),
-			'parameters' => array( 
-				'meter' => '1234',
-				),
+			'parameters' => array('meter' => '1234'),
 			'test' => true,
 			'active' => false
 		);
@@ -80,17 +78,17 @@ class Shippo_CarrierAccountTest extends TestCase
 
 	private function carrierUpdateResponse($account_id, $carrier, $params) {
 		return array(
-		  'carrier' => $carrier,
-		  'object_id' => $account_id,
-		  'object_owner' => 'happyhippos@goshippo.com',
-		  'account_id' => 'shippo_usps_account',
-		  'parameters' => array(
-		    'is_commercial' => false
-		  ),
-		  'test' => true,
-		  'active' => true,
-		  'is_shippo_account' => true,
-		  'metadata' => ''
+			'carrier' => $carrier,
+			'object_id' => $account_id,
+			'object_owner' => 'happyhippos@goshippo.com',
+			'account_id' => 'shippo_usps_account',
+			'parameters' => array(
+			'is_commercial' => false
+			),
+			'test' => true,
+			'active' => true,
+			'is_shippo_account' => true,
+			'metadata' => ''
 		);
 	}
 }

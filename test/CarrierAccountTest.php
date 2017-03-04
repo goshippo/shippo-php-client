@@ -68,7 +68,9 @@ class Shippo_CarrierAccountTest extends TestCase
 			'object_id' => $account_id,
 			'object_owner' => 'happyhippo@goshippo.com',
 			'account_id' => 'shippo_usps_account',
-			'parameters' => array('is_commercial' => false),
+			'parameters' => array(
+				'is_commercial' => false,
+			),
 			'test' => true,
 			'active' => true,
 			'is_shippo_account' => true,
@@ -83,7 +85,7 @@ class Shippo_CarrierAccountTest extends TestCase
 			'object_owner' => 'happyhippos@goshippo.com',
 			'account_id' => 'shippo_usps_account',
 			'parameters' => array(
-			'is_commercial' => false
+				'is_commercial' => false
 			),
 			'test' => true,
 			'active' => true,

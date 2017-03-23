@@ -33,7 +33,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $mock = $this->setMockObject();
         $mock->expects($this->any())
              ->method('request')
-             ->with(strtolower($method), 'https://api.goshippo.com' . $path,
+             ->with(strtolower($method), Shippo::$apiBase . $path,
                 $this->anything(), $params)
              ->willReturn(array(json_encode($return), $rcode));
 

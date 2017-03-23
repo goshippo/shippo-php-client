@@ -9,9 +9,6 @@ class Shippo_TransactionTest extends TestCase
         $metadata = 'metadata foo';
         $data = array(
             'rate' => $rate,
-            'notification_email_from' => 'true',
-            'notification_email_to' => 'false',
-            'notification_email_other' => 'max@goshippo.com',
             'metadata' => $metadata
         );
         $this->mockRequest('POST', '/v1/transactions/',
@@ -55,7 +52,7 @@ class Shippo_TransactionTest extends TestCase
     {
         return array(
            'object_state' => 'VALID',
-           'object_status' => 'SUCCESS',
+           'status' => 'SUCCESS',
            'object_created' => '2014-07-25T02:09:34.422Z',
            'object_updated' => '2014-07-25T02:09:34.513Z',
            'object_id' => 'ef8808606f4241ee848aa5990a09933c',
@@ -68,8 +65,6 @@ class Shippo_TransactionTest extends TestCase
            'label_url' => '',
            'commercial_invoice_url' => '',
            'messages' => array(),
-           'customs_note' => '',
-           'submission_note' => '',
            'metadata' => $metadata
         );
     }
@@ -78,7 +73,7 @@ class Shippo_TransactionTest extends TestCase
     {
         return array(
            'object_state' => 'VALID',
-           'object_status' => 'SUCCESS',
+           'status' => 'SUCCESS',
            'object_created' => '2014-07-17T00:43:40.842Z',
            'object_updated' => '2014-07-17T00:43:50.531Z',
            'object_id' => $transaction_id,
@@ -106,8 +101,6 @@ class Shippo_TransactionTest extends TestCase
            'label_url' =>'https://shippo-delivery.s3.amazonaws.com/70ae8117ee1749e393f249d5b77c45e0.pdf?Signature=vDw1ltcyGveVR1OQoUDdzC43BY8%3D&Expires=1437093830&AWSAccessKeyId=AKIAJTHP3LLFMYAWALIA',
            'commercial_invoice_url' => '',
            'messages' =>array(),
-           'customs_note' =>'',
-           'submission_note' =>'',
            'metadata' =>''
         );
     }

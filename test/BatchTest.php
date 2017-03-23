@@ -13,9 +13,7 @@ class Shippo_BatchTest extends TestCase
             'batch_shipments' => array(
                 array(
                     'shipment' => array(    
-                        'object_purpose' => 'PURCHASE',
                         'address_from' => array(
-                            'object_purpose' => 'PURCHASE',
                             'name' => 'Mr Hippo',
                             'street1' => '965 Mission St',
                             'street2' => 'Ste 201',
@@ -27,7 +25,6 @@ class Shippo_BatchTest extends TestCase
                             'email' => 'mrhippo@goshippo.com'
                         ),
                         'address_to' => array(
-                            'object_purpose' => 'PURCHASE',
                             'name' => 'Mrs Hippo',
                             'company' => '',
                             'street1' => 'Broadway 1',

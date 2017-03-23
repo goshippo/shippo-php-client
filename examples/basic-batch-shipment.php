@@ -64,14 +64,12 @@ require_once(__DIR__ . '../../vendor/autoload.php');
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
-Shippo::setApiKey('<API-KEY>'); 
-
-
-
+Shippo::setApiKey('<API-KEY>');
 
 //Example data to create a batch shipment
 //The complete reference to batch shipment creation is available here: https://goshippo.com/docs/reference#batches-create
 $carrier = '<YOUR CARRIER ACCOUNT PRIVATE KEY>';
+
 $data = array(
     'default_carrier_account' => $carrier,
     'default_servicelevel_token' => 'usps_priority',
@@ -80,9 +78,7 @@ $data = array(
     'batch_shipments' => array(
         array(
             'shipment' => array(    
-                'object_purpose' => 'PURCHASE',
                 'address_from' => array(
-                    'object_purpose' => 'PURCHASE',
                     'name' => 'Mr Hippo',
                     'street1' => '965 Mission St',
                     'street2' => 'Ste 201',
@@ -94,7 +90,6 @@ $data = array(
                     'email' => 'mrhippo@goshippo.com'
                 ),
                 'address_to' => array(
-                    'object_purpose' => 'PURCHASE',
                     'name' => 'Mrs Hippo',
                     'company' => '',
                     'street1' => 'Broadway 1',
@@ -128,7 +123,6 @@ echo "--> " . "Batch created with id: " . $batch['object_id'] . "\n";
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $from_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Mr Hippo',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
@@ -143,7 +137,6 @@ $from_address = array(
 // Example to_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $to_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Ms Hippo',
     'company' => 'San Diego Zoo',
     'street1' => '2920 Zoo Drive',
@@ -172,7 +165,6 @@ $parcel = array(
 // By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 $shipment = Shippo_Shipment::create(
 array(
-    'object_purpose'=> 'PURCHASE',
     'address_from'=> $from_address,
     'address_to'=> $to_address,
     'parcel'=> $parcel,

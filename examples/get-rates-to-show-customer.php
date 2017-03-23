@@ -24,7 +24,7 @@ Before running it, remember to do
     composer install
 */
 
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '../../vendor/autoload.php');
 
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
@@ -32,10 +32,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
 Shippo::setApiKey('<API-KEY>');
 
+
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $from_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Mr Hippo',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
@@ -50,7 +50,6 @@ $from_address = array(
 // Example to_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $to_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Ms Hippo',
     'company' => 'San Diego Zoo',
     'street1' => '2920 Zoo Drive',
@@ -79,15 +78,14 @@ $parcel = array(
 // By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 $shipment = Shippo_Shipment::create(
 array(
-    'object_purpose'=> 'PURCHASE',
     'address_from'=> $from_address,
     'address_to'=> $to_address,
     'parcel'=> $parcel,
     'async'=> false,
 ));
 
-// Rates are stored in the `rates_list` array inside the shipment object
-$rates = $shipment['rates_list'];
+// Rates are stored in the `rates` array inside the shipment object
+$rates = $shipment['rates'];
 
 // You can now show those rates to the user in your UI.
 // Most likely you want to show some of the following fields:
@@ -99,14 +97,14 @@ $rates = $shipment['rates_list'];
 // The details on all of the fields in the returned object are here: https://goshippo.com/docs/reference#rates
 echo "Available rates:" . "\n";
 foreach ($rates as $rate) {
-    echo "--> " . $rate['provider'] . " - " . $rate['servicelevel_name'] . "\n";
+    echo "--> " . $rate['provider'] . " - " . $rate['servicelevel']['name'] . "\n";
     echo "  --> " . "Amount: "             . $rate['amount'] . "\n";
     echo "  --> " . "Days to delivery: "   . $rate['days'] . "\n";
 }
 echo "\n";
 
 // This would be the index of the rate selected by the user
-$selected_rate_index = 1;
+$selected_rate_index = count($rates) - 1;
 
 // After the user has selected a rate, use the corresponding object_id
 $selected_rate = $rates[$selected_rate_index];
@@ -122,7 +120,7 @@ $transaction = Shippo_Transaction::create(array(
 
 // Print the shipping label from label_url
 // Get the tracking number from tracking_number
-if ($transaction['object_status'] == 'SUCCESS'){
+if ($transaction['status'] == 'SUCCESS'){
     echo "--> " . "Shipping label url: " . $transaction['label_url'] . "\n";
     echo "--> " . "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {

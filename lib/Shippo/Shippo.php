@@ -9,7 +9,7 @@ abstract class Shippo
     /**
      * @var string The base URL for the Shippo API.
      */
-    public static $apiBase = 'https://api.goshippo.com';
+    public static $apiBase = 'http://api.goshippo.com';
     /**
      * @var string|null The version of the Shippo API to use for requests.
      */

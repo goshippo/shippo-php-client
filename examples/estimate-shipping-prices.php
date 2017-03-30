@@ -25,7 +25,7 @@ Before running it, remember to do
     composer install
 */
 
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '../../vendor/autoload.php');
 
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
@@ -41,7 +41,6 @@ $destination_zip_codes = array('10007', '60290', '95122');
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $from_address = array(
-    'object_purpose' => 'QUOTE',
     'name' => 'Mr Hippo',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
@@ -72,7 +71,6 @@ foreach ($destination_zip_codes as $zip_code)
     // Example to_address with the zip code
     // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
     $to_address = array(
-        'object_purpose' => 'QUOTE',
         'country' => 'US',
         'zip' => $zip_code,
     );
@@ -82,7 +80,6 @@ foreach ($destination_zip_codes as $zip_code)
     // The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
     // By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
 	$shipments[] = Shippo_Shipment::create(array(
-        'object_purpose'=> 'QUOTE',
         'address_from'=> $from_address,
         'address_to'=> $to_address,
         'parcel'=> $parcel,
@@ -93,7 +90,7 @@ foreach ($destination_zip_codes as $zip_code)
 // Collect all shipments rates
 $all_rates = array();
 foreach ($shipments as $shipment) {
-    $all_rates = array_merge($all_rates, $shipment['rates_list']);
+    $all_rates = array_merge($all_rates, $shipment['rates']);
 }
 
 // This function takes a list of $rates, filters only those rates in

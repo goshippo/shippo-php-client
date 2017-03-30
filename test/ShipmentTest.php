@@ -6,7 +6,7 @@ class Shippo_ShipmentTest extends TestCase
     public function testValidCreate()
     {
         $shipment = self::getDefaultShipment();
-        $this->assertEquals($shipment->object_state, 'VALID');
+        $this->assertEquals($shipment->status, 'SUCCESS');
     }
     
     public function testInvalidCreate()
@@ -26,13 +26,6 @@ class Shippo_ShipmentTest extends TestCase
         $shipment = self::getDefaultShipment();
         $retrieve_shipment = Shippo_Shipment::retrieve($shipment->object_id);
         $this->assertEquals($retrieve_shipment->object_id, $shipment->object_id);
-    }
-    
-    public function testInvalidRetrieve()
-    {
-        $shipment = self::getDefaultShipment();
-        $retrieve_shipment = Shippo_Shipment::retrieve($shipment->object_id);
-        $this->assertNotEquals($retrieve_shipment->object_id, 'Invalid Value');
     }
     
     public function testListAll()
@@ -58,22 +51,25 @@ class Shippo_ShipmentTest extends TestCase
     public static function getDefaultShipment()
     {
         $addressFrom = Shippo_AddressTest::getDefaultAddress();
-        $addressTo = Shippo_AddressTest::getDefaultAddress();
+        $addressTo = Shippo_AddressTest::getDefaultAddress_2();
         $parcel = Shippo_ParcelTest::getDefaultParcel();
         return Shippo_Shipment::create(array(
-            'object_purpose' => 'QUOTE',
             'address_from' => $addressFrom->object_id,
             'address_to' => $addressTo->object_id,
             'parcel' => $parcel->object_id,
-            'submission_type' => 'PICKUP',
-            'submission_date' => '2013-12-03T12:00:00.000Z',
-            'insurance_amount' => '30',
-            'insurance_currency' => 'USD',
-            'extra' => '{signature_confirmation: true}',
+            'shipment_date' => '2013-12-03T12:00:00.000Z',
+            'extra' => array(
+                'signature_confirmation' => 'True',
+                'insurance' => array(
+                    'amount' => '30',
+                    'currency' => 'USD'
+                ),
+                'reference_1' => '',
+                'reference_2' => '',
+            ),
             'customs_declaration' => '',
-            'reference_1' => '',
-            'reference_2' => '',
-            'metadata' => 'Customer ID 123456'
+            'metadata' => 'Customer ID 123456',
+            'async' => 'False'
         ));
     }
 }

@@ -14,7 +14,7 @@ Before running it, remember to do
     composer install
 */
 
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '../../vendor/autoload.php');
 
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
@@ -28,7 +28,6 @@ const MAX_TRANSIT_TIME_DAYS = 3;
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $from_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Mr Hippo',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
@@ -43,7 +42,6 @@ $from_address = array(
 // Example to_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $to_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Ms Hippo',
     'company' => 'San Diego Zoo',
     'street1' => '2920 Zoo Drive',
@@ -72,7 +70,6 @@ $parcel = array(
 // By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 $shipment = Shippo_Shipment::create(
 array(
-    'object_purpose'=> 'PURCHASE',
     'address_from'=> $from_address,
     'address_to'=> $to_address,
     'parcel'=> $parcel,
@@ -80,10 +77,10 @@ array(
 ));
 
 // Filter rates by MAX_TRANSIT_TIME_DAYS
-// Rates are stored in the `rates_list` array
+// Rates are stored in the `rates` array
 // The details on the returned object are here: https://goshippo.com/docs/reference#rates
 $eligible_rates = array_values(array_filter(
-    $shipment['rates_list'],
+    $shipment['rates'],
     function($rate){
         return $rate['days'] <= MAX_TRANSIT_TIME_DAYS;
     }
@@ -108,7 +105,7 @@ $transaction = Shippo_Transaction::create(array(
 
 // Print the shipping label from label_url
 // Get the tracking number from tracking_number
-if ($transaction['object_status'] == 'SUCCESS'){
+if ($transaction['status'] == 'SUCCESS'){
     echo "--> " . "Shipping label url: " . $transaction['label_url'] . "\n";
     echo "--> " . "Shipping tracking number: " . $transaction['tracking_number'] . "\n";
 } else {

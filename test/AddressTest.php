@@ -5,13 +5,12 @@ class Shippo_AddressTest extends TestCase
     public function testValidCreate()
     {
         $address = self::getDefaultAddress();
-        $this->assertEquals($address->object_state, 'VALID');
+        $this->assertEquals($address->is_complete, true);
     }
 
     public function testResidentialCreate()
     {
         $address = Shippo_Address::create(array(
-            'object_purpose' => 'PURCHASE',
             'name' => 'John Smith',
             'company' => 'Initech',
             'street1' => 'Greene Rd.',
@@ -26,7 +25,7 @@ class Shippo_AddressTest extends TestCase
             'metadata' => 'Customer ID 234;234',
             'is_residential' => true
         ));
-        $this->assertEquals($address->object_state, 'VALID');
+        $this->assertEquals($address->is_complete, true);
     }
     
     public function testInvalidCreate()
@@ -43,7 +42,7 @@ class Shippo_AddressTest extends TestCase
             'email' => 'jmercouris@iit.com',
             'metadata' => 'Customer ID 234;234'
         ));
-        $this->assertEquals($address->object_state, 'INCOMPLETE');
+        $this->assertEquals($address->is_complete, false);
     }
     
     public function testRetrieve()
@@ -83,7 +82,6 @@ class Shippo_AddressTest extends TestCase
     public static function getDefaultAddress()
     {
         return Shippo_Address::create(array(
-            'object_purpose' => 'QUOTE',
             'name' => 'John Smith',
             'company' => 'Initech',
             'street1' => 'Greene Rd.',
@@ -96,6 +94,23 @@ class Shippo_AddressTest extends TestCase
             'phone' => '123 353 2345',
             'email' => 'jmercouris@iit.com',
             'metadata' => 'Customer ID 234;234'
+        ));
+    }
+    public static function getDefaultAddress_2()
+    {
+        return Shippo_Address::create(array(
+            'name' => 'John Smith',
+            'company' => 'Shippo',
+            'street1' => 'Mission St',
+            'street_no' => '965',
+            'street2' => '',
+            'city' => 'San Francisco',
+            'state' => 'CA',
+            'zip' => '94103',
+            'country' => 'US',
+            'phone' => '123 353 2345',
+            'email' => 'support@goshippo.com',
+            'metadata' => 'Customer ID 123;234'
         ));
     }
 }

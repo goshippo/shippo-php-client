@@ -9,26 +9,6 @@ class Shippo_RateTest extends TestCase
         $this->assertFalse(is_null($rate->results));
     }
     
-    public function testListAll()
-    {
-        $list = Shippo_Rate::all(array(
-            'results' => '1',
-            'page' => '1'
-        ));
-        $this->assertFalse(is_null($list->count));
-        $this->assertFalse(is_null($list->results));
-    }
-    
-    public function testListPageSize()
-    {
-        $pagesize = 1;
-        $list = Shippo_Rate::all(array(
-            'results' => $pagesize,
-            'page' => '1'
-        ));
-        $this->assertEquals(count($list->results), $pagesize);
-    }
-    
     public static function getDefaultRate()
     {
         $shipment = Shippo_ShipmentTest::getDefaultShipment();

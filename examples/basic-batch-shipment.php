@@ -21,7 +21,7 @@ Waiting for the batch to validate
             "shipment": "188f0891ee3e44888b577985c3cafb0f",
             "transaction": null,
             "object_id": "8940f9546c7040f58d84465dad496051",
-            "object_status": "VALID",
+            "status": "VALID",
             "messages": []
         },
         {
@@ -31,7 +31,7 @@ Waiting for the batch to validate
             "shipment": "a881b47ee9b04089b543588051ad49b5",
             "transaction": null,
             "object_id": "ecd6e8248ac54ec9821fb25e3398f815",
-            "object_status": "VALID",
+            "status": "VALID",
             "messages": []
         }
     ]
@@ -48,7 +48,7 @@ Waiting for the batch to validate
             "shipment": "a881b47ee9b04089b543588051ad49b5",
             "transaction": null,
             "object_id": "ecd6e8248ac54ec9821fb25e3398f815",
-            "object_status": "VALID",
+            "status": "VALID",
             "messages": []
         }
     ]
@@ -64,14 +64,12 @@ require_once(__DIR__ . '../../vendor/autoload.php');
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
-Shippo::setApiKey('<API-KEY>'); 
-
-
-
+Shippo::setApiKey('<API-KEY>');
 
 //Example data to create a batch shipment
 //The complete reference to batch shipment creation is available here: https://goshippo.com/docs/reference#batches-create
 $carrier = '<YOUR CARRIER ACCOUNT PRIVATE KEY>';
+
 $data = array(
     'default_carrier_account' => $carrier,
     'default_servicelevel_token' => 'usps_priority',
@@ -80,9 +78,7 @@ $data = array(
     'batch_shipments' => array(
         array(
             'shipment' => array(    
-                'object_purpose' => 'PURCHASE',
                 'address_from' => array(
-                    'object_purpose' => 'PURCHASE',
                     'name' => 'Mr Hippo',
                     'street1' => '965 Mission St',
                     'street2' => 'Ste 201',
@@ -94,7 +90,6 @@ $data = array(
                     'email' => 'mrhippo@goshippo.com'
                 ),
                 'address_to' => array(
-                    'object_purpose' => 'PURCHASE',
                     'name' => 'Mrs Hippo',
                     'company' => '',
                     'street1' => 'Broadway 1',
@@ -128,7 +123,6 @@ echo "--> " . "Batch created with id: " . $batch['object_id'] . "\n";
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $from_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Mr Hippo',
     'company' => 'Shippo',
     'street1' => '215 Clayton St.',
@@ -143,7 +137,6 @@ $from_address = array(
 // Example to_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $to_address = array(
-    'object_purpose' => 'PURCHASE',
     'name' => 'Ms Hippo',
     'company' => 'San Diego Zoo',
     'street1' => '2920 Zoo Drive',
@@ -172,7 +165,6 @@ $parcel = array(
 // By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 $shipment = Shippo_Shipment::create(
 array(
-    'object_purpose'=> 'PURCHASE',
     'address_from'=> $from_address,
     'address_to'=> $to_address,
     'parcel'=> $parcel,
@@ -188,7 +180,7 @@ $MAX_TIMEOUT = 10;
 $counter = 0;
 while ($counter < $MAX_TIMEOUT) {
     $retrieved_batch = Shippo_Batch::retrieve($batch['object_id']);
-    if ($retrieved_batch['object_status'] == 'VALID') {
+    if ($retrieved_batch['status'] == 'VALID') {
         break;
     } else {
         $counter = $counter + 1;
@@ -196,8 +188,8 @@ while ($counter < $MAX_TIMEOUT) {
     }
 }
 $retrieved_batch2 = Shippo_Batch::retrieve($batch['object_id']);
-if ($retrieved_batch2['object_status'] == 'VALID') {
-    echo "--> " . "Batch object " . $retrieved_batch2['object_id'] . " has status " . $retrieved_batch2['object_status'] . "\n";
+if ($retrieved_batch2['status'] == 'VALID') {
+    echo "--> " . "Batch object " . $retrieved_batch2['object_id'] . " has status " . $retrieved_batch2['status'] . "\n";
     //example shipment to add to the batch
     $shipments_to_add = array(
         array('shipment' => $shipment['object_id'])
@@ -217,7 +209,7 @@ if ($retrieved_batch2['object_status'] == 'VALID') {
     //purchase the batch shipment
     //For complete reference to the batch-purchase endpoint: https://goshippo.com/docs/reference#batches-purchase
     $purchased_batch = Shippo_Batch::purchase($removed_batch['object_id']);
-    echo "--> " . "Batch object " . $purchased_batch['object_id'] . " has status " . $purchased_batch['object_status'] . "\n";
+    echo "--> " . "Batch object " . $purchased_batch['object_id'] . " has status " . $purchased_batch['status'] . "\n";
 } else {
     echo 'Batch shipment validation timed out' . "\n";
 }

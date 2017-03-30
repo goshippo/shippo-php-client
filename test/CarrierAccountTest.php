@@ -24,7 +24,7 @@ class Shippo_CarrierAccountTest extends TestCase
             Shippo_CarrierAccount::retrieve($invalid_account_id);
             $this->fail('Expected carrier account not found exception to be thrown');
         } catch(Exception $e) {
-            $this->assertTrue(strpos($e->getMessage(), 'Not Found') !== false);
+            $this->assertTrue(strpos(strtolower($e->getMessage()), 'not found') !== false);
         }
     }
 

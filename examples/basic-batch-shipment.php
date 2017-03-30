@@ -21,7 +21,7 @@ Waiting for the batch to validate
             "shipment": "188f0891ee3e44888b577985c3cafb0f",
             "transaction": null,
             "object_id": "8940f9546c7040f58d84465dad496051",
-            "object_status": "VALID",
+            "status": "VALID",
             "messages": []
         },
         {
@@ -31,7 +31,7 @@ Waiting for the batch to validate
             "shipment": "a881b47ee9b04089b543588051ad49b5",
             "transaction": null,
             "object_id": "ecd6e8248ac54ec9821fb25e3398f815",
-            "object_status": "VALID",
+            "status": "VALID",
             "messages": []
         }
     ]
@@ -48,7 +48,7 @@ Waiting for the batch to validate
             "shipment": "a881b47ee9b04089b543588051ad49b5",
             "transaction": null,
             "object_id": "ecd6e8248ac54ec9821fb25e3398f815",
-            "object_status": "VALID",
+            "status": "VALID",
             "messages": []
         }
     ]
@@ -180,7 +180,7 @@ $MAX_TIMEOUT = 10;
 $counter = 0;
 while ($counter < $MAX_TIMEOUT) {
     $retrieved_batch = Shippo_Batch::retrieve($batch['object_id']);
-    if ($retrieved_batch['object_status'] == 'VALID') {
+    if ($retrieved_batch['status'] == 'VALID') {
         break;
     } else {
         $counter = $counter + 1;
@@ -188,8 +188,8 @@ while ($counter < $MAX_TIMEOUT) {
     }
 }
 $retrieved_batch2 = Shippo_Batch::retrieve($batch['object_id']);
-if ($retrieved_batch2['object_status'] == 'VALID') {
-    echo "--> " . "Batch object " . $retrieved_batch2['object_id'] . " has status " . $retrieved_batch2['object_status'] . "\n";
+if ($retrieved_batch2['status'] == 'VALID') {
+    echo "--> " . "Batch object " . $retrieved_batch2['object_id'] . " has status " . $retrieved_batch2['status'] . "\n";
     //example shipment to add to the batch
     $shipments_to_add = array(
         array('shipment' => $shipment['object_id'])
@@ -209,7 +209,7 @@ if ($retrieved_batch2['object_status'] == 'VALID') {
     //purchase the batch shipment
     //For complete reference to the batch-purchase endpoint: https://goshippo.com/docs/reference#batches-purchase
     $purchased_batch = Shippo_Batch::purchase($removed_batch['object_id']);
-    echo "--> " . "Batch object " . $purchased_batch['object_id'] . " has status " . $purchased_batch['object_status'] . "\n";
+    echo "--> " . "Batch object " . $purchased_batch['object_id'] . " has status " . $purchased_batch['status'] . "\n";
 } else {
     echo 'Batch shipment validation timed out' . "\n";
 }

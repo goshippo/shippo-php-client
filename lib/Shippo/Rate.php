@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_Rate extends Shippo_ApiResource
 {

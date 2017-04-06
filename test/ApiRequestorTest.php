@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_ApiRequestorTest extends TestCase
 {   
@@ -8,7 +9,7 @@ class Shippo_ApiRequestorTest extends TestCase
         // private. This is just for testing! Also it only works on PHP >=
         // 5.3
         if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
-            $reflector = new ReflectionClass('Shippo_APIRequestor');
+            $reflector = new \ReflectionClass('\Shippo\Shippo_APIRequestor');
             $method = $reflector->getMethod('_encodeObjects');
             $method->setAccessible(true);
             

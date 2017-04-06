@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_CustomsItem extends Shippo_ApiResource
 {

@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_Batch extends Shippo_ApiResource
 {

@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 // Tested on PHP 5.2, 5.3
 if (!function_exists('curl_init')) {

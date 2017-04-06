@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_Manifest extends Shippo_ApiResource
 {

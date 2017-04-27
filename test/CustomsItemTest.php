@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_CustomsItemTest extends TestCase
 {
@@ -15,7 +16,7 @@ class Shippo_CustomsItemTest extends TestCase
                 'invalid_data' => 'invalid'
             ));
         }
-        catch (Exception $e) {
+        catch (\Exception $e) {
             $this->assertTrue(true);
         }
         

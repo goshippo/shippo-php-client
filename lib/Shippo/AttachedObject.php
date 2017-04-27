@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 // e.g. metadata on Shippo objects.
 class Shippo_AttachedObject extends Shippo_Object

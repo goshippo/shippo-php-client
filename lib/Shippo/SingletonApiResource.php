@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 abstract class Shippo_SingletonApiResource extends Shippo_ApiResource
 {

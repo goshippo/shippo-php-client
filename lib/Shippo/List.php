@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_List extends Shippo_Object
 {

@@ -26,12 +26,14 @@ Before running it, remember to do
 */
 
 require_once(__DIR__ . '../../vendor/autoload.php');
-
+use \Shippo\Shippo;
+use \Shippo\Shippo_Shipment;
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
 Shippo::setApiKey('<API-KEY>');
+
 
 // Define delivery windows in max. days
 // Pick an east coast, a west coast and a mid-west destination
@@ -82,7 +84,7 @@ foreach ($destination_zip_codes as $zip_code)
 	$shipments[] = Shippo_Shipment::create(array(
         'address_from'=> $from_address,
         'address_to'=> $to_address,
-        'parcel'=> $parcel,
+        'parcels'=> array($parcel),
         'async'=> false
     ));
 }

@@ -1,6 +1,7 @@
 <?php
+namespace Shippo;
 
-class Shippo_Error extends Exception
+class Shippo_Error extends \Exception
 {
     public function __construct($message, $httpStatus = null, $httpBody = null, $jsonBody = null)
     {

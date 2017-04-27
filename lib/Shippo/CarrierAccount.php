@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_CarrierAccount extends Shippo_ApiResource
 {

@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_Address extends Shippo_ApiResource
 {

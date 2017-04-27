@@ -1,4 +1,5 @@
 <?php
+namespace Shippo;
 
 class Shippo_RateLimitError extends Shippo_InvalidRequestError
 {

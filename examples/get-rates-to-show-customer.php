@@ -80,7 +80,7 @@ $shipment = Shippo_Shipment::create(
 array(
     'address_from'=> $from_address,
     'address_to'=> $to_address,
-    'parcel'=> $parcel,
+    'parcels'=> array($parcel),
     'async'=> false,
 ));
 

@@ -101,7 +101,7 @@ $data = array(
                     'phone' => '4151234567',
                     'email' => 'mrshippo@goshippo.com'
                 ),
-                'parcel' => array(
+                'parcels' => array(
                     'length' => '5',
                     'width' => '5',
                     'height' => '5',
@@ -167,7 +167,7 @@ $shipment = Shippo_Shipment::create(
 array(
     'address_from'=> $from_address,
     'address_to'=> $to_address,
-    'parcel'=> $parcel,
+    'parcels'=> array($parcel),
     'async'=> false,
 ));
 echo "--> " . "Shipment created with id: " . $shipment['object_id'] . "\n";

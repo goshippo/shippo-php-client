@@ -1,5 +1,5 @@
 <?php
-namespace Shippo;
+
 class Shippo_Util_Set
 {
     private $_elts;

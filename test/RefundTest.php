@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 // Intentionally left blank
 class RefundTest extends TestCase

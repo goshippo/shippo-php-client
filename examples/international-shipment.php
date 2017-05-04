@@ -17,17 +17,12 @@ Before running it, remember to do
 */
 
 require_once(__DIR__ . '../../vendor/autoload.php');
-use \Shippo\Shippo;
-use \Shippo\Shippo_CustomsDeclaration;
-use \Shippo\Shippo_Shipment;
-use \Shippo\Shippo_Transaction;
+
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
 Shippo::setApiKey('<API-KEY>');
-
-
 
 // Example from_address array
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses

@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_InvalidRequestError extends Shippo_Error
 {

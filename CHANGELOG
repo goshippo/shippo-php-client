@@ -1,7 +1,3 @@
-=== =1.3.1 2017-03-30
-- Add namespacing
-- Change required php version to 5.6
-
 === =1.3.0 2017-03-30
 - Changes to support the new version of the API (v20170329)
 - See https://goshippo.com/docs/changelog for the complete list of changes

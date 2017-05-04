@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_Track extends Shippo_ApiResource
 {

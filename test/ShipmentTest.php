@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_ShipmentTest extends TestCase
 {
@@ -17,7 +16,7 @@ class Shippo_ShipmentTest extends TestCase
                 'invalid_data' => 'invalid'
             ));
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $this->assertTrue(true);
         }
     }
@@ -57,7 +56,7 @@ class Shippo_ShipmentTest extends TestCase
         return Shippo_Shipment::create(array(
             'address_from' => $addressFrom->object_id,
             'address_to' => $addressTo->object_id,
-            'parcels' => array($parcel->object_id),
+            'parcel' => $parcel->object_id,
             'shipment_date' => '2013-12-03T12:00:00.000Z',
             'extra' => array(
                 'signature_confirmation' => 'True',

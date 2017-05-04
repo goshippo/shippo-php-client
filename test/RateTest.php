@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_RateTest extends TestCase
 {
@@ -19,7 +18,7 @@ class Shippo_RateTest extends TestCase
                 'currency' => 'USD'
             ));
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             // Expected Exception, rates not ready, prompting to server to generate
         }
         sleep(5);

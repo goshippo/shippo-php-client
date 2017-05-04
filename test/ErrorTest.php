@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_ErrorTest extends TestCase
 {

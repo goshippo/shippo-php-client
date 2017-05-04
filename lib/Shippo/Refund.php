@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_Refund extends Shippo_ApiResource
 {

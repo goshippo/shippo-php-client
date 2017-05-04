@@ -12,9 +12,7 @@ Before running it, remember to do
 */
 
 require_once(__DIR__ . '../../vendor/autoload.php');
-use \Shippo\Shippo;
-use \Shippo\Shippo_Shipment;
-use \Shippo\Shippo_Transaction;
+
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
 
@@ -68,7 +66,7 @@ $shipment = Shippo_Shipment::create(
 array(
     'address_from'=> $from_address,
     'address_to'=> $to_address,
-    'parcels'=> array($parcel),
+    'parcel'=> $parcel,
     'async'=> false,
 ));
 

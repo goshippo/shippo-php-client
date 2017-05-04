@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 class Shippo_BatchTest extends TestCase
 {
@@ -37,15 +36,13 @@ class Shippo_BatchTest extends TestCase
                             'phone' => '4151234567',
                             'email' => 'mrshippo@goshippo.com'
                         ),
-                        'parcels' => array(
-                            array(
-                                'length' => '5',
-                                'width' => '5',
-                                'height' => '5',
-                                'distance_unit' => 'in',
-                                'weight' => '2',
-                                'mass_unit' => 'oz'
-                            )
+                        'parcel' => array(
+                            'length' => '5',
+                            'width' => '5',
+                            'height' => '5',
+                            'distance_unit' => 'in',
+                            'weight' => '2',
+                            'mass_unit' => 'oz'
                         )
                     )
                 )

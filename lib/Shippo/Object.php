@@ -1,7 +1,6 @@
 <?php
-namespace Shippo;
 
-class Shippo_Object implements \ArrayAccess
+class Shippo_Object implements ArrayAccess
 {
     /**
      * @var Shippo_Util_Set Attributes that should not be sent to the API because

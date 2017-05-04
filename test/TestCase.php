@@ -1,5 +1,4 @@
 <?php
-namespace Shippo;
 
 require 'vendor/autoload.php';
 
@@ -43,7 +42,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     protected function setMockObject()
     {
         if (!$this->mock) {
-            $this->mock = $this->createMock('\Shippo\CurlClient');
+            $this->mock = $this->createMock('CurlClient');
             Shippo_ApiRequestor::setHttpClient($this->mock);
         }
         return $this->mock;

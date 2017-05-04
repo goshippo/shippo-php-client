@@ -36,8 +36,6 @@ Sample output:--> Carrier: usps
 Before running it, remember to do
     composer install
 */
-use \Shippo\Shippo;
-use \Shippo\Shippo_Track;
 
 require_once(__DIR__ . '../../vendor/autoload.php');
 
@@ -46,7 +44,6 @@ require_once(__DIR__ . '../../vendor/autoload.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
 Shippo::setApiKey('<API-KEY>'); 
-
 
 
 //Example data for Track::get_status

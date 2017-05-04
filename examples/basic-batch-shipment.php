@@ -59,12 +59,12 @@ Before running it, remember to do
 */
 
 require_once(__DIR__ . '../../vendor/autoload.php');
-
 // or if you do not have or want the composer autoload feature do
 // require_once('path/to/shippo/library/folder/' . 'lib/Shippo.php');
 
 // Replace <API-KEY> with your credentials from https://app.goshippo.com/api/
 Shippo::setApiKey('<API-KEY>');
+
 
 //Example data to create a batch shipment
 //The complete reference to batch shipment creation is available here: https://goshippo.com/docs/reference#batches-create
@@ -102,12 +102,14 @@ $data = array(
                     'email' => 'mrshippo@goshippo.com'
                 ),
                 'parcels' => array(
-                    'length' => '5',
-                    'width' => '5',
-                    'height' => '5',
-                    'distance_unit' => 'in',
-                    'weight' => '2',
-                    'mass_unit' => 'oz'
+                    array(
+                        'length' => '5',
+                        'width' => '5',
+                        'height' => '5',
+                        'distance_unit' => 'in',
+                        'weight' => '2',
+                        'mass_unit' => 'oz'
+                    )
                 )
             )
         )

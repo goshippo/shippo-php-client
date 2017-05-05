@@ -1,5 +1,8 @@
 <?php
 
+use Shippo\Shippo_Rate;
+use Shippo\Shippo_Shipment;
+
 class Shippo_RateTest extends TestCase
 {
     

@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 class Shippo_List extends Shippo_Object
 {
     public function all($params = null)

@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Shipment;
+
 class Shippo_ShipmentTest extends TestCase
 {
     

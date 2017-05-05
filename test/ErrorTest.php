@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Error;
+
 class Shippo_ErrorTest extends TestCase
 {
     public function testCreation()

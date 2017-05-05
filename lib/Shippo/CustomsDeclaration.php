@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 class Shippo_CustomsDeclaration extends Shippo_ApiResource
 {
     /**

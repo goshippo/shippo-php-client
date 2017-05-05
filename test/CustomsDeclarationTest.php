@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_CustomsDeclaration;
+
 class Shippo_CustomsDeclarationTest extends TestCase
 {
     public function testValidCreate()

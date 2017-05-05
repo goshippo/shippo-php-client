@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\CurlClient;
+
 class Shippo_CurlClientTest extends TestCase
 {
     public function testEncode()

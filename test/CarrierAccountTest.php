@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_CarrierAccount;
+
 class Shippo_CarrierAccountTest extends TestCase
 {
     

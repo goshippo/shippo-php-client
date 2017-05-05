@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Track;
+
 class Shippo_TrackTest extends TestCase
 {
     public function testGet_Status() {

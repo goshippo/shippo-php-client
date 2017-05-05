@@ -1,5 +1,10 @@
 <?php
 
+namespace Shippo;
+
+use ArrayAccess;
+use Shippo\Util\Shippo_Util_Set;
+
 class Shippo_Object implements ArrayAccess
 {
     /**
@@ -56,7 +61,7 @@ class Shippo_Object implements ArrayAccess
     public function __set($k, $v)
     {
         if ($v === "") {
-            throw new InvalidArgumentException('You cannot set \'' . $k . '\'to an empty string. ' . 'We interpret empty strings as NULL in requests. ' . 'You may set obj->' . $k . ' = NULL to delete the property');
+            throw new \InvalidArgumentException('You cannot set \'' . $k . '\'to an empty string. ' . 'We interpret empty strings as NULL in requests. ' . 'You may set obj->' . $k . ' = NULL to delete the property');
         }
         
         if (self::$nestedUpdatableAttributes->includes($k) && isset($this->$k) && is_array($v)) {
@@ -179,7 +184,7 @@ class Shippo_Object implements ArrayAccess
                 continue;
             
             if (self::$nestedUpdatableAttributes->includes($k) && is_array($v)) {
-                $this->_values[$k] = Shippo_Object::scopedConstructFrom('Shippo_AttachedObject', $v, $apiKey);
+                $this->_values[$k] = Shippo_Object::scopedConstructFrom(Shippo_AttachedObject::class, $v, $apiKey);
             } else {
                 $this->_values[$k] = Shippo_Util::convertToShippoObject($v, $apiKey);
             }

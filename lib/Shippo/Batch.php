@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 class Shippo_Batch extends Shippo_ApiResource
 {
     /**
@@ -17,27 +19,24 @@ class Shippo_Batch extends Shippo_ApiResource
     /**
      * @param array|null $params
      * @param string|null $apiKey
-     *
-     * @return Shippo_Batch Create a batch shipment object 
+     * @return static
      */
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
         return self::_scopedCreate($class, $params, $apiKey);
     }
-    
+
     /**
-     * @param string $id
-     * @param string|null $apiKey
-     *
-     * @return Shippo_Retrieve Retrieves a batch shipment 
+     * @param $id
+     * @param null $apiKey
+     * @return static
      */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
         return self::_scopedRetrieve($class, $id, $apiKey);
     }
-
      /**
      * @param string $id
      * @param array|null $params

@@ -1,5 +1,8 @@
 <?php
 
+use Shippo\Shippo_Address;
+use Shippo\Shippo_InvalidRequestError;
+
 class Shippo_InvalidRequestErrorTest extends TestCase
 {
     public function testInvalidObject()

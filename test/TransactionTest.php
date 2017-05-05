@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Transaction;
+
 class Shippo_TransactionTest extends TestCase
 {
     
@@ -45,6 +47,7 @@ class Shippo_TransactionTest extends TestCase
             'results' => $pagesize,
             'page' => '1'
         ));
+        var_dump($list);
         $this->assertEquals(count($list->results), $pagesize);
     }
 

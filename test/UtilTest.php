@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Util;
+
 class Shippo_UtilTest extends TestCase
 {
     public function testIsList()

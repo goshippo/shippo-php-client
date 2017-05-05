@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 class CurlClient
 {
     private static $instance;

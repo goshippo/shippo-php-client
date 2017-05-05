@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Parcel;
+
 class Shippo_ParcelTest extends TestCase
 {
     public function testValidCreate()

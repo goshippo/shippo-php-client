@@ -1,5 +1,9 @@
 <?php
 
+use Shippo\Shippo;
+use Shippo\Shippo_Address;
+use Shippo\Shippo_AuthenticationError;
+
 class Shippo_AuthenticationErrorTest extends TestCase
 {
     public function testInvalidCredentials()

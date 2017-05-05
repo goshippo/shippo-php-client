@@ -85,7 +85,6 @@ Simple usage looks like:
             ));
             
         var_dump($address);
-    
 ```        
 
 We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).

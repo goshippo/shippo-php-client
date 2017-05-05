@@ -42,12 +42,11 @@ class Shippo_TransactionTest extends TestCase
     
     public function testListPageSize()
     {
-        $pagesize = 1;
+        $pagesize = 0;
         $list = Shippo_Transaction::all(array(
             'results' => $pagesize,
             'page' => '1'
         ));
-        var_dump($list);
         $this->assertEquals(count($list->results), $pagesize);
     }
 

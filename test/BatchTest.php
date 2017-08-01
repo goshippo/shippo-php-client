@@ -111,7 +111,6 @@ class Shippo_BatchTest extends TestCase
             'default_servicelevel_token' => 'usps_priority',
             'label_filetype' => 'PDF_4x6',
             'batch_shipments' => array(
-                'count' => 0,
                 'next' => null,
                 'previous' => null,
                 'results' => array()
@@ -138,7 +137,6 @@ class Shippo_BatchTest extends TestCase
             'default_servicelevel_token' => 'usps_priority',
             'label_filetype' => 'PDF_4x6',
             'batch_shipments' => array(
-                'count' => 1,
                 'next' => 'https://api.goshippo.com/batches/5ef63c54f5bf45d3b1f8fb37dcb1c5f4?object_results=creation_failed&page=3',
                 'previous' => 'https://api.goshippo.com/batches/5ef63c54f5bf45d3b1f8fb37dcb1c5f4?object_results=creation_failed&page=1',
                 'results' => array(
@@ -184,7 +182,6 @@ class Shippo_BatchTest extends TestCase
             'default_servicelevel_token' => 'usps_priority',
             'label_filetype' => 'PDF_4x6',
             'batch_shipments' => array(
-                'count' => 2,
                 'next' => null,
                 'previous' => null,
                 'results' => array(
@@ -232,7 +229,6 @@ class Shippo_BatchTest extends TestCase
             'default_servicelevel_token' => 'usps_priority',
             'label_filetype' => 'PDF_4x6',
             'batch_shipments' => array(
-                'count' => 0,
                 'next' => null,
                 'previous' => null,
                 'results' => array()
@@ -259,7 +255,6 @@ class Shippo_BatchTest extends TestCase
             'default_servicelevel_token' => 'usps_priority',
             'label_filetype' => 'PDF_4x6',
             'batch_shipments' => array(
-                'count' => 1,
                 'next' => null,
                 'previous' => null,
                 'results' => array(

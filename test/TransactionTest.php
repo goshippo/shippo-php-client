@@ -34,7 +34,6 @@ class Shippo_TransactionTest extends TestCase
             'results' => '3',
             'page' => '1'
         ));
-        $this->assertFalse(is_null($list->count));
         $this->assertFalse(is_null($list->results));
     }
     

@@ -5,7 +5,6 @@ class Shippo_CarrierAccountTest extends TestCase
     
     public function testListAll() {
         $list = Shippo_CarrierAccount::all();
-        $this->assertFalse(is_null($list->count));
         $this->assertFalse(is_null($list->results));
     }
 

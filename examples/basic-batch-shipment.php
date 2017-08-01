@@ -10,7 +10,6 @@ Sample output:
 Waiting for the batch to validate
 --> Batch object 6590eecf10f04c79a41bc6ffc6406b6f has status VALID
 --> batch now contains shipments: {
-    "count": 2,
     "next": null,
     "previous": null,
     "results": [
@@ -37,7 +36,6 @@ Waiting for the batch to validate
     ]
 }
 --> batch now contains shipments: {
-    "count": 1,
     "next": null,
     "previous": null,
     "results": [

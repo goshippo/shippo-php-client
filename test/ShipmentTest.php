@@ -2,13 +2,13 @@
 
 class Shippo_ShipmentTest extends TestCase
 {
-    
+
     public function testValidCreate()
     {
         $shipment = self::getDefaultShipment();
         $this->assertEquals($shipment->status, 'SUCCESS');
     }
-    
+
     public function testInvalidCreate()
     {
         try {
@@ -20,14 +20,14 @@ class Shippo_ShipmentTest extends TestCase
             $this->assertTrue(true);
         }
     }
-    
+
     public function testRetrieve()
     {
         $shipment = self::getDefaultShipment();
         $retrieve_shipment = Shippo_Shipment::retrieve($shipment->object_id);
         $this->assertEquals($retrieve_shipment->object_id, $shipment->object_id);
     }
-    
+
     public function testListAll()
     {
         $list = Shippo_Shipment::all(array(
@@ -36,7 +36,7 @@ class Shippo_ShipmentTest extends TestCase
         ));
         $this->assertFalse(is_null($list->results));
     }
-    
+
     public function testListPageSize()
     {
         $pagesize = 1;
@@ -46,7 +46,7 @@ class Shippo_ShipmentTest extends TestCase
         ));
         $this->assertEquals(count($list->results), $pagesize);
     }
-    
+
     public static function getDefaultShipment()
     {
         $addressFrom = Shippo_AddressTest::getDefaultAddress();
@@ -56,7 +56,6 @@ class Shippo_ShipmentTest extends TestCase
             'address_from' => $addressFrom->object_id,
             'address_to' => $addressTo->object_id,
             'parcels' => array($parcel->object_id),
-            'shipment_date' => '2013-12-03T12:00:00.000Z',
             'extra' => array(
                 'signature_confirmation' => 'True',
                 'insurance' => array(

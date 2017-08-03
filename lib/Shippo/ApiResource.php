@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 abstract class Shippo_ApiResource extends Shippo_Object
 {
     protected static function _scopedRetrieve($class, $id, $apiKey = null)
@@ -8,7 +10,7 @@ abstract class Shippo_ApiResource extends Shippo_Object
         $instance->refresh();
         return $instance;
     }
-    
+
     /**
      * @returns Shippo_ApiResource The refreshed resource.
      */

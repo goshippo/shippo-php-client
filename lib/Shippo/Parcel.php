@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 class Shippo_Parcel extends Shippo_ApiResource
 {
     /**

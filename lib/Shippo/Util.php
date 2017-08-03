@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 abstract class Shippo_Util
 {
     /**
@@ -66,9 +68,9 @@ abstract class Shippo_Util
             return $mapped;
         } else if (is_array($resp)) {
             if (isset($resp['object_purpose']) && is_string($resp['object_purpose']) && isset($types[$resp['object_purpose']])) {
-                $class = $types[$resp['object_purpose']];
+                $class = "Shippo\\" . $types[$resp['object_purpose']];
             } else {
-                $class = 'Shippo_Object';
+                $class = Shippo_Object::class;
             }
             return Shippo_Object::scopedConstructFrom($class, $resp, $apiKey);
         } else {

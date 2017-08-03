@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo;
+
 class Shippo_BaseTest extends TestCase
 {
     public function testSetApiKey()

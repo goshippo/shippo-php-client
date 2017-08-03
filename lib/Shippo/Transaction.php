@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 class Shippo_Transaction extends Shippo_ApiResource
 {
     /**

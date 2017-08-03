@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Address;
+
 class Shippo_AddressTest extends TestCase
 {
     public function testValidCreate()

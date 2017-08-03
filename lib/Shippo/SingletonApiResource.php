@@ -1,5 +1,7 @@
 <?php
 
+namespace Shippo;
+
 abstract class Shippo_SingletonApiResource extends Shippo_ApiResource
 {
     protected static function _scopedSingletonRetrieve($class, $apiKey = null)

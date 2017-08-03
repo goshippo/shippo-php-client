@@ -1,4 +1,7 @@
 <?php
+
+namespace Shippo;
+
 class Shippo_ApiRequestor
 {
     /**

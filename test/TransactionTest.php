@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Transaction;
+
 class Shippo_TransactionTest extends TestCase
 {
     
@@ -39,7 +41,7 @@ class Shippo_TransactionTest extends TestCase
     
     public function testListPageSize()
     {
-        $pagesize = 1;
+        $pagesize = 0;
         $list = Shippo_Transaction::all(array(
             'results' => $pagesize,
             'page' => '1'

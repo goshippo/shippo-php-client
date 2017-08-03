@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Object;
+
 class Shippo_ObjectTest extends TestCase
 {
     public function testArrayAccessorsSemantics()

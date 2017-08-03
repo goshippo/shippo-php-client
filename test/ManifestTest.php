@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Manifest;
+
 class Shippo_ManifestTest extends TestCase
 {
     public function testCreate()

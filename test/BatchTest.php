@@ -1,5 +1,7 @@
 <?php
 
+use Shippo\Shippo_Batch;
+
 class Shippo_BatchTest extends TestCase
 {
     public function testCreate() {

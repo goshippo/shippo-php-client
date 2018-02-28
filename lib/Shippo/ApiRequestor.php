@@ -106,31 +106,30 @@ class Shippo_ApiRequestor
                 throw new Shippo_ApiError($msg, $rcode, $rbody, $resp);
         }
     }
-    
-    private function _requestRaw($method, $url, $params)
+
+    public function getRequestHeaders()
     {
-        $myApiKey = $this->_apiKey;
-        if (!$myApiKey)
-            $myApiKey = Shippo::$apiKey;
-        
-        if (!$myApiKey) {
-            $msg = 'No credentials provided.';
-            throw new Shippo_AuthenticationError($msg);
-        }
-        
-        $absUrl = $this->apiUrl($url);
-        $params = self::_encodeObjects($params);
-        $langVersion = phpversion();
-        $uname = php_uname();
+        $apiKey = $this->_getApiKey();
+
         $headers = array(
             'Content-Type: application/json',
-            'Authorization: ' . $this->_getAuthorizationType($myApiKey) . ' ' . $myApiKey,
+            'Authorization: ' . $this->_getAuthorizationType($apiKey) . ' ' . $apiKey,
             'Accept: application/json',
             'User-Agent: Shippo/v1 PHPBindings/' . Shippo::VERSION
         );
         if (Shippo::getApiVersion()){
             $headers[] = 'Shippo-API-Version: ' . Shippo::getApiVersion();
         }
+
+        return $headers;
+    }
+    
+    private function _requestRaw($method, $url, $params)
+    {
+        $absUrl = $this->apiUrl($url);
+        $params = self::_encodeObjects($params);
+        $myApiKey = $this->_getApiKey();
+        $headers = $this->getRequestHeaders();
         
         list($rbody, $rcode) = $this->httpClient()->request($method, $absUrl, $headers, $params);
         return array(
@@ -154,6 +153,20 @@ class Shippo_ApiRequestor
             $this->handleApiError($rbody, $rcode, $resp);
         }
         return $resp;
+    }
+
+    private function _getApiKey()
+    {
+        $apiKey = $this->_apiKey;
+        if (!$apiKey)
+            $apiKey = Shippo::$apiKey;
+
+        if (!$apiKey) {
+            $msg = 'No credentials provided.';
+            throw new Shippo_AuthenticationError($msg);
+        }
+
+        return $apiKey;
     }
 
     private function _getAuthorizationType($apiKey = '')

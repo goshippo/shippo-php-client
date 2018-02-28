@@ -43,21 +43,16 @@ class Shippo_ApiRequestorTest extends TestCase
      *
      * @param $expectedAuthorizationType
      * @param $apiToken
-     * @throws ReflectionException
      */
     public function testGetAuthorizationType($expectedAuthorizationType, $apiToken)
     {
-        // We have to do some work here because this is normally
-        // private. This is just for testing! Also it only works on PHP >=
-        // 5.3
-        if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
-            $reflector = new ReflectionClass('Shippo_APIRequestor');
-            $method = $reflector->getMethod('_getAuthorizationType');
-            $method->setAccessible(true);
+        $apiRequestor = new Shippo_ApiRequestor($apiToken);
+        $headers = $apiRequestor->getRequestHeaders();
+        $authorizationHeader = current(array_filter($headers, function ($header) {
+            return strpos($header, 'Authorization:') === 0;
+        }));
 
-            $apiRequestor = new Shippo_ApiRequestor($apiToken);
-            $this->assertEquals($expectedAuthorizationType, $method->invoke($apiRequestor, $apiToken));
-        }
+        $this->assertEquals(strpos($authorizationHeader, 'Authorization: ' . $expectedAuthorizationType), 0);
     }
 
     public function provideValidAPITokens()

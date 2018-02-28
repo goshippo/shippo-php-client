@@ -162,8 +162,7 @@ class Shippo_ApiRequestor
             $apiKey = Shippo::$apiKey;
 
         if (!$apiKey) {
-            $msg = 'No credentials provided.';
-            throw new Shippo_AuthenticationError($msg);
+            throw new Shippo_AuthenticationError('No credentials provided.');
         }
 
         return $apiKey;

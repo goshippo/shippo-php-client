@@ -124,7 +124,7 @@ class Shippo_ApiRequestor
         $uname = php_uname();
         $headers = array(
             'Content-Type: application/json',
-            'Authorization: ShippoToken ' . $myApiKey,
+            'Authorization: ' . $this->_getAuthorizationType($myApiKey) . ' ' . $myApiKey,
             'Accept: application/json',
             'User-Agent: Shippo/v1 PHPBindings/' . Shippo::VERSION
         );
@@ -155,7 +155,11 @@ class Shippo_ApiRequestor
         }
         return $resp;
     }
-    
+
+    private function _getAuthorizationType($apiKey = '')
+    {
+        return strpos($apiKey, 'oauth.') === 0 ? 'Bearer' : 'ShippoToken';
+    }
 
     public static function setHttpClient($client)
     {

@@ -37,5 +37,52 @@ class Shippo_ApiRequestorTest extends TestCase
             ));
         }
     }
-    
+
+    /**
+     * @dataProvider provideValidAPITokens
+     *
+     * @param $expectedAuthorizationType
+     * @param $apiToken
+     * @throws ReflectionException
+     */
+    public function testGetAuthorizationType($expectedAuthorizationType, $apiToken)
+    {
+        // We have to do some work here because this is normally
+        // private. This is just for testing! Also it only works on PHP >=
+        // 5.3
+        if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
+            $reflector = new ReflectionClass('Shippo_APIRequestor');
+            $method = $reflector->getMethod('_getAuthorizationType');
+            $method->setAccessible(true);
+
+            $apiRequestor = new Shippo_ApiRequestor($apiToken);
+            $this->assertEquals($expectedAuthorizationType, $method->invoke($apiRequestor, $apiToken));
+        }
+    }
+
+    public function provideValidAPITokens()
+    {
+        return [
+            'oauth bearer token' => [
+                'Bearer',
+                'oauth.612BUDkTaTuJP3ll5-VkebURXUIJ5Zefxwda1tpd.U_akmGaXVQl80CWPXSbueSG7NX7sNe_HvLJLN1d1pn0='
+            ],
+            'random oauth formatted token' => [
+                'Bearer',
+                'oauth.foo'
+            ],
+            'shippo token' => [
+                'ShippoToken',
+                'dW5pdHRlc3Q6dW5pdHRlc3Q='
+            ],
+            'random token' => [
+                'ShippoToken',
+                'askdljfgaklsdfjalskdfjalksjd'
+            ],
+            'random token with oauth in the string' => [
+                'ShippoToken',
+                'askdljfgaklsdfjalskdfjalksjd.oauth'
+            ],
+        ];
+    }
 }

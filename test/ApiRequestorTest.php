@@ -37,5 +37,47 @@ class Shippo_ApiRequestorTest extends TestCase
             ));
         }
     }
-    
+
+    /**
+     * @dataProvider provideValidAPITokens
+     *
+     * @param $expectedAuthorizationType
+     * @param $apiToken
+     */
+    public function testGetAuthorizationType($expectedAuthorizationType, $apiToken)
+    {
+        $apiRequestor = new Shippo_ApiRequestor($apiToken);
+        $headers = $apiRequestor->getRequestHeaders();
+        $authorizationHeader = current(array_filter($headers, function ($header) {
+            return strpos($header, 'Authorization:') === 0;
+        }));
+
+        $this->assertEquals(strpos($authorizationHeader, 'Authorization: ' . $expectedAuthorizationType), 0);
+    }
+
+    public function provideValidAPITokens()
+    {
+        return [
+            'oauth bearer token' => [
+                'Bearer',
+                'oauth.612BUDkTaTuJP3ll5-VkebURXUIJ5Zefxwda1tpd.U_akmGaXVQl80CWPXSbueSG7NX7sNe_HvLJLN1d1pn0='
+            ],
+            'random oauth formatted token' => [
+                'Bearer',
+                'oauth.foo'
+            ],
+            'shippo token' => [
+                'ShippoToken',
+                'dW5pdHRlc3Q6dW5pdHRlc3Q='
+            ],
+            'random token' => [
+                'ShippoToken',
+                'askdljfgaklsdfjalskdfjalksjd'
+            ],
+            'random token with oauth in the string' => [
+                'ShippoToken',
+                'askdljfgaklsdfjalskdfjalksjd.oauth'
+            ],
+        ];
+    }
 }

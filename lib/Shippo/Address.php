@@ -18,7 +18,7 @@ class Shippo_Address extends Shippo_ApiResource
      * @param array|null $params
      * @param string|null $apiKey
      *
-     * @return Shippo_Adress Create an Address.
+     * @return Shippo_Address Create an Address.
      */
     public static function create($params = null, $apiKey = null)
     {

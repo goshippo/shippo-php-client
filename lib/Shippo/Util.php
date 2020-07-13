@@ -37,8 +37,6 @@ abstract class Shippo_Util
             }
             if ($v instanceof Shippo_Object) {
                 $results[$k] = $v->__toArray(true);
-            } else if (is_array($v)) {
-                $results[$k] = self::convertShippoObjectToArray($v);
             } else {
                 $results[$k] = $v;
             }

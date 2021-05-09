@@ -80,12 +80,12 @@ $shipment = Shippo_Shipment::create(
 array(
     'address_from'=> $from_address,
     'address_to'=> $to_address,
-    'parcels'=> array($parcel),
+    'parcel'=> $parcel,
     'async'=> false,
 ));
 
 // Rates are stored in the `rates` array inside the shipment object
-$rates = $shipment['rates'];
+$rates = $shipment['rates_list'];
 
 // You can now show those rates to the user in your UI.
 // Most likely you want to show some of the following fields:

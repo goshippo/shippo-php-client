@@ -1,3 +1,7 @@
+=== =1.4.5 2021-10-28
+- Add pickups
+- Add orders
+
 === =1.3.2 2017-05-04
 - Revert changes to namespacing to be revisted
 - Fix parcel to parcels

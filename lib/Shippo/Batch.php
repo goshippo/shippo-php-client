@@ -11,7 +11,7 @@ class Shippo_Batch extends Shippo_ApiResource
     */
     public static function classUrl($class)
     {
-        return "/v1/batches";
+        return "/batches";
     }
 
     /**

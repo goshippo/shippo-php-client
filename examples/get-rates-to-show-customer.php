@@ -109,7 +109,6 @@ $selected_rate_index = count($rates) - 1;
 // After the user has selected a rate, use the corresponding object_id
 $selected_rate = $rates[$selected_rate_index];
 $selected_rate_object_id = $selected_rate['object_id'];
-$selected_rate_carrier_account = $selected_rate['carrier_account'];
 
 
 // Purchase the desired rate with a transaction request
@@ -127,28 +126,6 @@ if ($transaction['status'] == 'SUCCESS'){
 } else {
     echo "Transaction failed with messages:" . "\n";
     foreach ($transaction['messages'] as $message) {
-        echo "--> " . $message . "\n";
-    }
-}
-
-$pickupTimeStart = date('Y-m-d H:i:s', time());
-$pickupTimeEnd = date('Y-m-d H:i:s', time() + 60*60*24);
-$pickup = Shippo_Pickup::create(array(
-    "carrier_account" => $selected_rate_carrier_account,
-    "location" => array(
-        "building_location_type" => "Knock on Door",
-        "address" => $to_address
-    ),
-    "transactions" => array($transaction->object_id),
-    "requested_start_time" => $pickupTimeStart,
-    "requested_end_time" => $pickupTimeEnd,
-    "is_test" => false
-));
-if ($pickup['status'] == 'SUCCESS'){
-    echo "--> " . "Pickup has been scheduled\n";
-} else {
-    echo "Pickup failed with messages:" . "\n";
-    foreach ($pickup['messages'] as $message) {
         echo "--> " . $message . "\n";
     }
 }

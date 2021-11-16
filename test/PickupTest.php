@@ -24,7 +24,6 @@ class Shippo_PickupTest extends TestCase
         catch (Exception $e) {
             $this->assertTrue(true);
         }
-        
     }
     
 
@@ -43,7 +42,6 @@ class Shippo_PickupTest extends TestCase
                 "requested_start_time" => $pickupTimeStart,
                 "requested_end_time" => $pickupTimeEnd,
                 "is_test" => false
-              
         ));
     }
 }

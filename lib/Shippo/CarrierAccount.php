@@ -11,7 +11,7 @@ class Shippo_CarrierAccount extends Shippo_ApiResource
     */
     public static function classUrl($class)
     {
-        return "/v1/carrier_accounts";
+        return "/carrier_accounts";
     }
     
     /**

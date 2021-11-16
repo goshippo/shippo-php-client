@@ -11,7 +11,7 @@ class Shippo_Address extends Shippo_ApiResource
      */
     public static function classUrl($class)
     {
-        return "/v1/addresses";
+        return "/addresses";
     }
     
     /**

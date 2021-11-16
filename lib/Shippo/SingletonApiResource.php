@@ -16,7 +16,7 @@ abstract class Shippo_SingletonApiResource extends Shippo_ApiResource
     public static function classUrl($class)
     {
         $base = self::className($class);
-        return "/v1/${base}";
+        return "/${base}";
     }
     
     /**

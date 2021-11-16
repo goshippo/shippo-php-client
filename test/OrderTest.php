@@ -16,7 +16,6 @@ class Shippo_OrderTest extends TestCase
         catch (Exception $e) {
             $this->assertTrue(true);
         }
-        
     }
     
     public function testRetrieve()

@@ -38,14 +38,14 @@ $from_address = array(
 // The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 $to_address = array(
     'name' => 'Ms Hippo',
-    'company' => 'San Diego Zoo',
-    'street1' => '2920 Zoo Drive',
-    'city' => 'San Diego',
-    'state' => 'CA',
-    'zip' => '92101',
-    'country' => 'US',
+    'company' => 'Regents Park',
+    'street1' => 'Outer Cir',
+    'city' => 'London',
+    'zip' => 'NW1 4RY',
+    'country' => 'GB',
     'phone' => '+1 555 341 9393',
     'email' => 'ms-hippo@goshipppo.com',
+	'metadata' =>  'For Order Number 123',
 );
 
 // Parcel information array

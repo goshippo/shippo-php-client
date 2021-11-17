@@ -1,5 +1,8 @@
 <?php
 
+require 'Shippo_AddressTest.php';
+require 'Shippo_ParcelTest.php';
+
 class Shippo_ShipmentTest extends TestCase
 {
 

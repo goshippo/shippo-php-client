@@ -11,7 +11,7 @@ class Shippo_CustomsItem extends Shippo_ApiResource
      */
     public static function classUrl($class)
     {
-        return "/v1/customs/items";
+        return "/customs/items";
     }
     
     /**

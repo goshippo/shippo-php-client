@@ -55,7 +55,7 @@ abstract class Shippo_ApiResource extends Shippo_Object
     public static function classUrl($class)
     {
         $base = self::_scopedLsb($class, 'className', $class);
-        return "/v1/${base}s";
+        return "/${base}s";
     }
     
     /**
@@ -122,7 +122,7 @@ abstract class Shippo_ApiResource extends Shippo_Object
     {
         self::_validateCall('create', $params, $apiKey);
         $requestor = new Shippo_ApiRequestor($apiKey);
-        $url = "/v1/shipments/" . $id . "/rates/{$params['currency']}";
+        $url = "//shipments/" . $id . "/rates/{$params['currency']}";
         list($response, $apiKey) = $requestor->request('get', $url, $params);
         return Shippo_Util::convertToShippoObject($response, $apiKey);
     }

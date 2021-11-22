@@ -11,14 +11,14 @@ class Shippo_CarrierAccount extends Shippo_ApiResource
     */
     public static function classUrl($class)
     {
-        return "/v1/carrier_accounts";
+        return "/carrier_accounts";
     }
     
     /**
     * @param array|null $params
     * @param string|null $apiKey
     *
-    * @return Shippo_CustomsItem Create a customs item.
+    * @return Shippo_CarrierAccount Create a carrier account.
     */
     public static function create($params = null, $apiKey = null)
     {
@@ -29,7 +29,7 @@ class Shippo_CarrierAccount extends Shippo_ApiResource
     /**
     * @param array|null $params
     *
-    * @return Shippo_Retrieve Get a customs item.
+    * @return Shippo_Retrieve Get a carrier account.
     */
     public static function retrieve($id, $apiKey = null)
     {
@@ -40,7 +40,7 @@ class Shippo_CarrierAccount extends Shippo_ApiResource
     /**
     * @param array|null $params
     *
-    * @return Shippo_All Get all the customs items.
+    * @return Shippo_All Get all the carrier account.
     */
     public static function all($params = null, $apiKey = null)
     {
@@ -51,7 +51,7 @@ class Shippo_CarrierAccount extends Shippo_ApiResource
     /**
     * @param id of the CarrierAccount to be updated
     *
-    * @return Shippo_Retrieve Get a customs item.
+    * @return Shippo_Retrieve Get a carrier account.
     */
     public static function update($id, $params, $apiKey = null)
     {

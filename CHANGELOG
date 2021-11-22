@@ -1,6 +1,7 @@
-=== =1.4.5 2021-10-28
+=== =1.5.0 2021-10-28
 - Add pickups
 - Add orders
+- Add CircleCi
 
 === =1.3.2 2017-05-04
 - Revert changes to namespacing to be revisted

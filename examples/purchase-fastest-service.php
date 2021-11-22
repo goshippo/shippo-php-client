@@ -81,13 +81,13 @@ array(
 $eligible_rates = array_values(array_filter(
     $shipment['rates'],
     function($rate){
-        return $rate['days'] <= MAX_TRANSIT_TIME_DAYS;
+        return $rate['estimated_days'] <= MAX_TRANSIT_TIME_DAYS;
     }
 ));
 
 // Select the fastest from eligible service levels
 usort($eligible_rates, function($a, $b) {
-    return $a['days'] - $b['days'];
+    return $a['estimated_days'] - $b['estimated_days'];
 });
 
 // Purchase the desired rate with a transaction request

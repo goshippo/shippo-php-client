@@ -11,7 +11,7 @@ class Shippo_Track extends Shippo_ApiResource
     */
     public static function classUrl($class)
     {
-        return "/v1/tracks";
+        return "/tracks";
     }
 
     /**

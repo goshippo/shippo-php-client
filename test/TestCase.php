@@ -3,14 +3,14 @@
 require 'vendor/autoload.php';
 
 // Base class for test cases
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     const SHIPPO_KEY = '<YOUR SHIPPO API KEY>';
 
     //mock curl client for mocking requests
     private $mock;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         self::authFromEnv();
         Shippo_ApiRequestor::setHttpClient(CurlClient::instance());

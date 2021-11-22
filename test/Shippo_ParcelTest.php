@@ -45,7 +45,7 @@ class Shippo_ParcelTest extends TestCase
     
     public function testListPageSize()
     {
-        $pagesize = 1;
+        $pagesize = 2;
         $list = Shippo_Parcel::all(array(
             'results' => $pagesize,
             'page' => '1'

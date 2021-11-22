@@ -1,7 +1,7 @@
 <?php
 
 // Intentionally left blank
-class RefundTest extends TestCase
+class Shippo_RefundTest extends TestCase
 {
     public function testTrue()
     {

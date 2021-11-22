@@ -6,7 +6,7 @@ class Shippo_TrackTest extends TestCase
         $tracking_id = '9205590164917312751089';
         $carrier = 'usps';
         $metadata = null;
-        $this->mockRequest('GET', '/v1/tracks/' . $carrier . '/' . $tracking_id,
+        $this->mockRequest('GET', '/tracks/' . $carrier . '/' . $tracking_id,
             array(), $this->trackingResponse($tracking_id, $carrier, null));
         $status = Shippo_Track::get_status(array(
             'id' => $tracking_id,
@@ -25,7 +25,7 @@ class Shippo_TrackTest extends TestCase
             'tracking_number' => $tracking_id,
             'metadata' => $metadata
         );
-        $this->mockRequest('POST', '/v1/tracks/',
+        $this->mockRequest('POST', '/tracks/',
             $params, $this->trackingResponse($tracking_id, $carrier, $metadata));
         $webhook_response = Shippo_Track::create($params);
         $this->assertEquals($webhook_response->carrier, $carrier);

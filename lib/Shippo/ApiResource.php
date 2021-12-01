@@ -122,7 +122,7 @@ abstract class Shippo_ApiResource extends Shippo_Object
     {
         self::_validateCall('create', $params, $apiKey);
         $requestor = new Shippo_ApiRequestor($apiKey);
-        $url = "//shipments/" . $id . "/rates/{$params['currency']}";
+        $url = "/shipments/" . $id . "/rates/{$params['currency']}";
         list($response, $apiKey) = $requestor->request('get', $url, $params);
         return Shippo_Util::convertToShippoObject($response, $apiKey);
     }

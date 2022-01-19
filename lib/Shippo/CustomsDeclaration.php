@@ -11,7 +11,7 @@ class Shippo_CustomsDeclaration extends Shippo_ApiResource
      */
     public static function classUrl($class)
     {
-        return "/v1/customs/declarations";
+        return "/customs/declarations";
     }
     
     /**

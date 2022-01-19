@@ -13,7 +13,7 @@ class Shippo_ManifestTest extends TestCase
             'transactions' => array('64bba01845ef40d29374032599f22588', 'c169aa586a844cc49da00d0272b590e1'),
             'async' => false
         );
-        $this->mockRequest('POST', '/v1/manifests/',
+        $this->mockRequest('POST', '/manifests/',
             $data, $this->manifestCreateResponse($carrier_account, $shipment_date));
         $manifest = Shippo_Manifest::create($data);
         $this->assertEquals($manifest->carrier_account, $carrier_account);
@@ -23,7 +23,7 @@ class Shippo_ManifestTest extends TestCase
     public function testRetrieve()
     {
         $manifest_id = '0fadebf6f60c4aca95fa01bcc59c79ae';
-        $this->mockRequest('GET', '/v1/manifests/' . $manifest_id,
+        $this->mockRequest('GET', '/manifests/' . $manifest_id,
             array(), $this->manifestRetrieveResponse($manifest_id));
         $retrieve_manifest = Shippo_Manifest::retrieve($manifest_id);
         $this->assertEquals($retrieve_manifest->object_id, $manifest_id);

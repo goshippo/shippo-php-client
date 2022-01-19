@@ -11,7 +11,7 @@ class Shippo_TransactionTest extends TestCase
             'rate' => $rate,
             'metadata' => $metadata
         );
-        $this->mockRequest('POST', '/v1/transactions/',
+        $this->mockRequest('POST', '/transactions/',
             $data, $this->transactionCreateResponse($rate, $metadata));
         $transaction = Shippo_Transaction::create($data);
 
@@ -22,7 +22,7 @@ class Shippo_TransactionTest extends TestCase
     public function testRetrieve()
     {
         $transaction_id = '70ae8117ee1749e393f249d5b77c45e0';
-         $this->mockRequest('GET', '/v1/transactions/' . $transaction_id,
+         $this->mockRequest('GET', '/transactions/' . $transaction_id,
             array(), $this->transactionRetrieveResponse($transaction_id));
         $retrieve_transaction = Shippo_Transaction::retrieve($transaction_id);
         $this->assertEquals($retrieve_transaction->object_id, $transaction_id);

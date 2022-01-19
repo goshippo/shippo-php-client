@@ -129,6 +129,7 @@ if ($transaction['status'] == 'SUCCESS'){
         echo "--> " . $message . "\n";
     }
 }
+
 // For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 // complete documentation: https://goshippo.com/docs/
 ?>

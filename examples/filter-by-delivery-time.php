@@ -82,7 +82,7 @@ array(
 $eligible_rates = array_values(array_filter(
     $shipment['rates'],
     function($rate){
-        return $rate['days'] <= MAX_TRANSIT_TIME_DAYS;
+        return $rate['estimated_days'] <= MAX_TRANSIT_TIME_DAYS;
     }
 ));
 

@@ -51,7 +51,7 @@ class Shippo_BatchTest extends TestCase
             ) 
         );
 
-        $this->mockRequest('POST', '/v1/batches/',
+        $this->mockRequest('POST', '/batches/',
             $data, $this->batchCreateResponse($carrier, $metadata));
         $batch = Shippo_Batch::create($data);
         $this->assertEquals($batch->default_carrier_account, $carrier);
@@ -60,7 +60,7 @@ class Shippo_BatchTest extends TestCase
 
     public function testRetrieve() {
         $batch_id = 'test_batch_id';
-        $this->mockRequest('GET', '/v1/batches/' . $batch_id,
+        $this->mockRequest('GET', '/batches/' . $batch_id,
             array(), $this->batchRetrieveResponse($batch_id));
         $batch = Shippo_Batch::retrieve($batch_id);
         $this->assertEquals($batch->object_id, $batch_id);
@@ -73,7 +73,7 @@ class Shippo_BatchTest extends TestCase
             array('shipment' => 'batchID2'),
             array('shipment' => 'batchID3')
         );
-        $this->mockRequest('POST', '/v1/batches/' . $batch_id . '/add_shipments/',
+        $this->mockRequest('POST', '/batches/' . $batch_id . '/add_shipments/',
             $data, $this->batchAddResponse($batch_id));
         $batch = Shippo_Batch::add($batch_id, $data);
         $this->assertEquals($batch->object_id, $batch_id);
@@ -85,7 +85,7 @@ class Shippo_BatchTest extends TestCase
             "batchID1",
             "batchID2"
         );
-        $this->mockRequest('POST', '/v1/batches/' . $batch_id . '/remove_shipments/',
+        $this->mockRequest('POST', '/batches/' . $batch_id . '/remove_shipments/',
             $data, $this->batchRemoveResponse($batch_id));
         $batch = Shippo_Batch::remove($batch_id, $data);
         $this->assertEquals($batch->object_id, $batch_id);
@@ -93,7 +93,7 @@ class Shippo_BatchTest extends TestCase
 
     public function testPurchase() {
         $batch_id = 'test_batch_id';
-        $this->mockRequest('POST', '/v1/batches/' . $batch_id . '/purchase/',
+        $this->mockRequest('POST', '/batches/' . $batch_id . '/purchase/',
             array(), $this->batchPurchaseResponse($batch_id));
         $batch = Shippo_Batch::purchase($batch_id);
         $this->assertEquals($batch->object_id, $batch_id);

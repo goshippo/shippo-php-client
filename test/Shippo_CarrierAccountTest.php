@@ -10,7 +10,7 @@ class Shippo_CarrierAccountTest extends TestCase
 
     public function testRetrieve() {
         $account_id = 'test_account_id';
-        $this->mockRequest('GET', '/v1/carrier_accounts/' . $account_id,
+        $this->mockRequest('GET', '/carrier_accounts/' . $account_id,
             array(), $this->carrierRetrieveResponse($account_id));
 
         $carrier_account = Shippo_CarrierAccount::retrieve($account_id);
@@ -37,7 +37,7 @@ class Shippo_CarrierAccountTest extends TestCase
         $account_id = 'test_account_id';
         $carrier = 'fedex';
         $active = true;
-        $this->mockRequest('PUT', '/v1/carrier_accounts/' . $account_id,
+        $this->mockRequest('PUT', '/carrier_accounts/' . $account_id,
             array('active' => $active), $this->carrierUpdateResponse($account_id, $carrier, $active));
         $updated_account = Shippo_CarrierAccount::update(
             $account_id, 

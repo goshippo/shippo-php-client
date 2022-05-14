@@ -31,5 +31,8 @@
   },
   "autoload": {
     "classmap": ["lib/Shippo/"]
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
   }
 }

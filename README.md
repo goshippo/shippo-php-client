@@ -13,6 +13,25 @@ Print a shipping label in 10 mins using our default USPS and DHL Express account
 
 ## Installation
 
+If you are installing composer for the first time , you can use the following steps:
+
+### On Mac:
+
+First install Brew on your MAC:
+
+```
+   $/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   $brew update
+```
+
+Then install composer:
+
+```   $brew install composer
+brew install composer
+```
+
+
+
 ### Installing using Composer
 
 * [Get Composer](http://getcomposer.org/)

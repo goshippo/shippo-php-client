@@ -39,4 +39,4 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
       - name: Run Tests
-        run: composer run-script test
+        run: ./vendor/bin/phpunit

@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 // Base class for test cases
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    const SHIPPO_KEY = '<YOUR SHIPPO API KEY>';
+    const SHIPPO_KEY = 'shippo_test_cf1b6d0655e59fc6316880580765066038ef20d8';
 
     //mock curl client for mocking requests
     private $mock;

@@ -40,3 +40,16 @@ jobs:
         run: composer install --prefer-dist --no-progress
       - name: Run Tests
         run: ./vendor/bin/phpunit
+      - name: Send a Slack notification saying if tests are passing/failing for a given PHP version
+        shell: bash
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          conclusion=${{ steps.tests.conclusion }}
+          if [[ "$conclusion" == "success" ]]; then
+            message="✅ PHP SDK Test succeeded for PHP ${{ matrix.php-versions }}"
+          else
+            message="❌ PHP SDK Test failed for PHP ${{ matrix.php-versions }}"
+          fi
+
+          curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL

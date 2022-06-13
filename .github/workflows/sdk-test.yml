@@ -1,10 +1,6 @@
 name: PHP SDK Test
 
-on:
-  push:
-    branches: [ "github-actions-setup" ]
-  pull_request:
-    branches: [ "github-actions-setup" ]
+on: [push]
 
 permissions:
   contents: read

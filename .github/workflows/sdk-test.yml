@@ -38,7 +38,8 @@ jobs:
             ${{ runner.os }}-php-
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-      - name: Run Tests
+      - id: tests
+        name: Run the tests
         run: ./vendor/bin/phpunit
       - name: Send a Slack notification saying if tests are passing/failing for a given PHP version
         shell: bash

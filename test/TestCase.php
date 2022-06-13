@@ -6,6 +6,7 @@ require 'vendor/autoload.php';
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     const SHIPPO_KEY = 'shippo_test_cf1b6d0655e59fc6316880580765066038ef20d8';
+    const SHIPPO_API_VERSION = '2018-02-08';
 
     //mock curl client for mocking requests
     private $mock;
@@ -13,6 +14,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp() : void
     {
         self::authFromEnv();
+        self::apiVersionFromEnv();
         Shippo_ApiRequestor::setHttpClient(CurlClient::instance());
         $this->mock = null;
     }
@@ -25,6 +27,16 @@ class TestCase extends \PHPUnit\Framework\TestCase
         }
 
         Shippo::setApiKey($apiKey);
+    }
+
+    protected static function apiVersionFromEnv()
+    {
+        $apiVersion = getenv('SHIPPO_API_VERSION');
+        if (!$apiVersion) {
+            $apiVersion = self::SHIPPO_API_VERSION;
+        }
+
+        Shippo::setApiVersion($apiVersion);
     }
 
     protected function mockRequest($method, $path, $params = array(), 

@@ -1,6 +1,13 @@
 name: PHP SDK Test
 
-on: [push]
+on:
+  # Run the tests on every push to the master branch
+  push:
+    branches: [ "master" ]
+
+  # Run the tests for the default branch [master] every Monday 3:00 pm UTC time (8:00 am PST)
+  schedule:
+    - cron: "0 15 * * 1"
 
 permissions:
   contents: read

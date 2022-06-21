@@ -1,0 +1,59 @@
+name: PHP SDK Test
+
+on:
+  # Run the tests on every push to the master branch
+  push:
+    branches: [ "master" ]
+
+  # Run the tests for the default branch [master] every Monday 3:00 pm UTC time (8:00 am PST)
+  schedule:
+    - cron: "0 15 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['7.4', '8.0']
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+      - name: Check PHP Version
+        run: php -v
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+      - id: tests
+        name: Run the tests
+        run: ./vendor/bin/phpunit
+      - name: Send a Slack notification saying if tests are passing/failing for a given PHP version
+        shell: bash
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          conclusion=${{ steps.tests.conclusion }}
+          if [[ "$conclusion" == "success" ]]; then
+            message="✅ PHP SDK Test succeeded for PHP ${{ matrix.php-versions }}"
+          else
+            message="❌ PHP SDK Test failed for PHP ${{ matrix.php-versions }}"
+          fi
+
+          curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL

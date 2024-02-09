@@ -1,4 +1,13 @@
 # Shippo PHP API wrapper
+
+---
+
+:warning: **Shippo no longer actively maintains this library** <br>
+However, you can use it as a starting point and update it for your needs and future changes to our APIs.<br>
+You can use our [Open API Specification](https://docs.goshippo.com/shippoapi/public-api/) to build your own library using tools like the [OpenAPI Generator](https://openapi-generator.tech/) and [Swagger Codegen](https://swagger.io/tools/swagger-codegen/).
+
+---
+
 [![Build Status](https://travis-ci.org/goshippo/shippo-php-client.svg?branch=master)](https://travis-ci.org/goshippo/shippo-php-client)
 
 Shippo is a shipping API that connects you with [multiple shipping carriers](https://goshippo.com/carriers/) (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many others) through one interface.
